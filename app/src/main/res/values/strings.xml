@@ -12,4 +12,6 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_diet">Diet</string>
+    <string name="menu_progress">Progress</string>
+
 </resources>
