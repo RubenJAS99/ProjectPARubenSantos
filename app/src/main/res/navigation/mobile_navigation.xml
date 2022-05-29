@@ -28,4 +28,10 @@
         android:name="rjas.projectparubensantos.ui.profile.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_diet"
+        android:name="rjas.projectparubensantos.ui.diet.DietFragment"
+        android:label="@string/menu_diet"
+        tools:layout="@layout/fragment_diet" />
 </navigation>

@@ -1,4 +1,4 @@
-package rjas.projectparubensantos.ui.profile
+package rjas.projectparubensantos.ui.diet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import rjas.projectparubensantos.databinding.FragmentProfileBinding
-import rjas.projectparubensantos.ui.profile.ProfileViewModel
+import rjas.projectparubensantos.databinding.FragmentDietBinding
 
-class ProfileFragment: Fragment() {
-    private var _binding: FragmentProfileBinding? = null
+class DietFragment: Fragment() {
+    private var _binding: FragmentDietBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +21,14 @@ class ProfileFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val profileViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
+        val galleryViewModel =
+            ViewModelProvider(this).get(DietViewModel::class.java)
 
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentDietBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textProfile
-        profileViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textDiet
+        galleryViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
@@ -39,5 +38,4 @@ class ProfileFragment: Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

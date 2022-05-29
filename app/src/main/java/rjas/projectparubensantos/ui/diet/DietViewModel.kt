@@ -1,13 +1,14 @@
-package rjas.projectparubensantos.ui.home
+package rjas.projectparubensantos.ui.diet
 
-import  androidx.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class DietViewModel: ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is Diet Fragment"
     }
     val text: LiveData<String> = _text
+
 }
