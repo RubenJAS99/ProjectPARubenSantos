@@ -2,6 +2,9 @@ package rjas.projectparubensantos
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_profile, R.id.nav_diet, R.id.nav_progress
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_profile, R.id.nav_diet, R.id.nav_progress, R.id.nav_settings
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -49,6 +52,17 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
+
+/*    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //Open the settings Fragment.
+        if (item.itemId==R.id.nav_settings) {
+            supportFragmentManager.fragments.get(R.id.nav_settings);
+
+            Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show();*//*
+
+        }
+        return super.onOptionsItemSelected(item)
+    }*/
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
