@@ -7,6 +7,8 @@
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1095" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/drawable/ic_baseline_pie_chart_24.xml" value="0.1095" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.279" />
+        <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.17637215528781794" />
+        <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout-w936dp/activity_login.xml" value="0.19228142076502733" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/activity_login.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/app_bar_main.xml" value="0.264" />
@@ -16,7 +18,7 @@
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/fragment_home.xml" value="0.1334853090172239" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/fragment_profile.xml" value="0.1334853090172239" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/fragment_progress.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/fragment_settings.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/login.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/layout/nav_header_main.xml" value="0.40150093808630394" />
         <entry key="..\:/Users/RJAS/AndroidStudioProjects/ProjectPARubenSantos/app/src/main/res/menu/activity_main_drawer.xml" value="0.8800000000000001" />
