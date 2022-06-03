@@ -115,22 +115,21 @@ class DietFragment: Fragment() {
         val weight = editTextNumberDecimalWeight.text.toString().toDouble()
         val height = editTextNumberDecimalHeight.text.toString().toDouble()
         val age = editTextNumberDecimalAge.text.toString().toDouble()
-        var activityLevel = seekBarActivityLevel.progress
+        var activityLevel = seekBarActivityLevel.progress.toString().toDouble()
 
         when (activityLevel) {
-            0 -> activityLevel = 2
-            1 -> activityLevel = 3
-            2 -> activityLevel = 4
-            3 -> activityLevel = 5
-            else -> {
-                activityLevel = 6
-            }
+            0.0 -> activityLevel = 1.2
+            1.0 -> activityLevel = 1.375
+            2.0 -> activityLevel = 1.55
+            3.0 -> activityLevel = 1.725
+            else -> activityLevel = 1.9
         }
 
-        //Formula calcule
+        //Calculating the result
         val result = (((10 * weight) + (6.25 * height) - (5 * age)) + 5 )* activityLevel
 
         //Updating the result text view
+        Log.i(TAG, "activityLevel $activityLevel")
         textViewResult2.text = result.toString()
 
     }
