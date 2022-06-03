@@ -60,7 +60,7 @@
         android:id="@+id/textViewResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="56dp"
         android:text="Result:"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="24sp"
@@ -129,6 +129,15 @@
         app:layout_constraintTop_toTopOf="@+id/textViewResult"
         tools:text="2500 kcal" />
 
+    <TextView
+        android:id="@+id/textViewActivityDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarActivityLevel"
+        app:layout_constraintStart_toStartOf="@+id/seekBarActivityLevel"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarActivityLevel"
+        tools:text="Sedentary" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package rjas.projectparubensantos.ui.diet
 
+import android.animation.ArgbEvaluator
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import rjas.projectparubensantos.R
@@ -28,6 +30,7 @@ class DietFragment: Fragment() {
     private lateinit var editTextNumberDecimalAge: EditText
     private lateinit var seekBarActivityLevel: SeekBar
     private lateinit var textViewResult2: TextView
+    private lateinit var textViewActivityDescription: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,6 +60,7 @@ class DietFragment: Fragment() {
         editTextNumberDecimalAge = view.findViewById(R.id.editTextNumberDecimalAge)
         seekBarActivityLevel = view.findViewById(R.id.seekBarActivityLevel)
         textViewResult2 = view.findViewById(R.id.textViewResult2)
+        textViewActivityDescription = view.findViewById(R.id.textViewActivityDescription)
 
         //When the value of seekbar and editTexts change, read and save on a variable
 
@@ -94,12 +98,31 @@ class DietFragment: Fragment() {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 Log.i(TAG, "onProgressChangedActivityLevel $progress")
                 kcalResult()
-                //seekBarActivityLevel.text = progress
+                updateActivityDescription(progress)
+
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
+    }
+
+    private fun updateActivityDescription(ActivityDescription: Int) {
+        //Description of the Activity input
+        val activityLevel =  when (ActivityDescription) {
+            0 -> "Sedentary"
+            1 -> "1 to 3 days a week"
+            2 -> "3 to 5 days a week"
+            3 -> "6 to 7 days a week"
+            else -> "2 times a day"
+        }
+        textViewActivityDescription.text = activityLevel
+        //Color update
+        val color = ArgbEvaluator().evaluate(
+           ActivityDescription.toFloat() / seekBarActivityLevel.max,
+           ContextCompat.getColor(this, R.color.lowExercise),
+            ContextCompat.getColor(this, R.color.highExercise)
+        )
     }
 
     private fun kcalResult() {
@@ -113,10 +136,11 @@ class DietFragment: Fragment() {
 
         // Getting the values
         val weight = editTextNumberDecimalWeight.text.toString().toDouble()
-        val height = editTextNumberDecimalHeight.text.toString().toDouble()
-        val age = editTextNumberDecimalAge.text.toString().toDouble()
+        val height = editTextNumberDecimalHeight.text.toString().toDouble().toInt()
+        val age = editTextNumberDecimalAge.text.toString().toDouble().toInt()
         var activityLevel = seekBarActivityLevel.progress.toString().toDouble()
 
+        //Setting the real values of the activity level
         when (activityLevel) {
             0.0 -> activityLevel = 1.2
             1.0 -> activityLevel = 1.375
@@ -130,7 +154,7 @@ class DietFragment: Fragment() {
 
         //Updating the result text view
         Log.i(TAG, "activityLevel $activityLevel")
-        textViewResult2.text = result.toString()
+        textViewResult2.text = "%.0f".format(result)
 
     }
 
