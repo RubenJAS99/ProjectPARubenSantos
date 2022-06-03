@@ -6,83 +6,123 @@
     android:layout_height="match_parent"
     tools:context=".ui.diet.DietFragment">
 
+    <!--Left Components-->
     <TextView
         android:id="@+id/textViewWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:text="Weight:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimalWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-12dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="70.00"
-        android:inputType="numberDecimal"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewWeight"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:text="Height:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumberHeight"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWeight"
         app:layout_constraintTop_toBottomOf="@+id/textViewWeight" />
-
-    <EditText
-        android:id="@+id/editTextNumberHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-10dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="175(cm)"
-        android:inputType="number"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewHeight"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimalWeight" />
 
     <TextView
         android:id="@+id/textViewAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:text="Age:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWeight"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeight" />
 
-    <EditText
-        android:id="@+id/editTextNumberAge"
+    <TextView
+        android:id="@+id/textViewActivityLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Activity:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWeight"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAge" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Result:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWeight"
+        app:layout_constraintTop_toBottomOf="@+id/textViewActivityLevel" />
+
+
+    <!--Right Components-->
+    <EditText
+        android:id="@+id/editTextNumberDecimalWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:ems="10"
-        android:hint="24"
-        android:inputType="number"
+        android:hint="70 kg"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewWeight"
+        app:layout_constraintStart_toEndOf="@+id/textViewWeight"
+        app:layout_constraintTop_toTopOf="@+id/textViewWeight" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimalHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="170(cm)"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewHeight"
+        app:layout_constraintStart_toStartOf="@+id/editTextNumberDecimalAge"
+        app:layout_constraintTop_toTopOf="@+id/textViewHeight" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimalAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="20 years"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewAge"
+        app:layout_constraintStart_toStartOf="@+id/seekBarActivityLevel"
+        app:layout_constraintTop_toTopOf="@+id/textViewAge" />
+
+    <SeekBar
+        android:id="@+id/seekBarActivityLevel"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:max="4"
+        android:progress="1"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewActivityLevel"
+        app:layout_constraintStart_toStartOf="@+id/textViewResult2"
+        app:layout_constraintTop_toTopOf="@+id/textViewActivityLevel" />
+
+    <TextView
+        android:id="@+id/textViewResult2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewAge"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberHeight" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewResult"
+        app:layout_constraintTop_toTopOf="@+id/textViewResult"
+        tools:layout_editor_absoluteX="146dp"
+        tools:text="2500 kcal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

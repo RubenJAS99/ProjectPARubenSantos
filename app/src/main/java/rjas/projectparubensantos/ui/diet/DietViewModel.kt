@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class DietViewModel: ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Diet Fragment"
+        //value = "This is Diet Fragment"
     }
     val text: LiveData<String> = _text
 

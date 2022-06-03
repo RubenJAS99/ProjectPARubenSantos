@@ -21,16 +21,18 @@ class DietFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
+        val dietViewModel =
             ViewModelProvider(this).get(DietViewModel::class.java)
 
         _binding = FragmentDietBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+      val root: View = binding.root
 
-        val textView: TextView = binding.textDiet
-        galleryViewModel.text.observe(viewLifecycleOwner) {
+
+/*        val textView: TextView = binding.textDiet
+        dietViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
+
         return root
     }
 
