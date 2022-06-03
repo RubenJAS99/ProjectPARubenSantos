@@ -86,22 +86,24 @@
         android:id="@+id/editTextNumberDecimalHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:ems="10"
         android:hint="170(cm)"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/textViewHeight"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumberDecimalAge"
+        app:layout_constraintStart_toEndOf="@+id/textViewHeight"
         app:layout_constraintTop_toTopOf="@+id/textViewHeight" />
 
     <EditText
         android:id="@+id/editTextNumberDecimalAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:ems="10"
         android:hint="20 years"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/textViewAge"
-        app:layout_constraintStart_toStartOf="@+id/seekBarActivityLevel"
+        app:layout_constraintStart_toEndOf="@+id/textViewAge"
         app:layout_constraintTop_toTopOf="@+id/textViewAge" />
 
     <SeekBar
@@ -109,20 +111,24 @@
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="210dp"
         android:layout_height="40dp"
+        android:layout_marginStart="32dp"
         android:max="4"
         android:progress="1"
         app:layout_constraintBottom_toBottomOf="@+id/textViewActivityLevel"
-        app:layout_constraintStart_toStartOf="@+id/textViewResult2"
+        app:layout_constraintStart_toEndOf="@+id/textViewActivityLevel"
         app:layout_constraintTop_toTopOf="@+id/textViewActivityLevel" />
 
     <TextView
         android:id="@+id/textViewResult2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewResult"
+        app:layout_constraintStart_toEndOf="@+id/textViewResult"
         app:layout_constraintTop_toTopOf="@+id/textViewResult"
-        tools:layout_editor_absoluteX="146dp"
         tools:text="2500 kcal" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
