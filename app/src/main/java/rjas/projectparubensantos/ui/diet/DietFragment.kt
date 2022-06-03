@@ -1,6 +1,8 @@
 package rjas.projectparubensantos.ui.diet
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -56,18 +58,81 @@ class DietFragment: Fragment() {
         seekBarActivityLevel = view.findViewById(R.id.seekBarActivityLevel)
         textViewResult2 = view.findViewById(R.id.textViewResult2)
 
-        //When the value of seekbar change, shows the activity level
+        //When the value of seekbar and editTexts change, read and save on a variable
+
+        editTextNumberDecimalWeight.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                Log.i(TAG, "afterTextChangedWeight $s")
+                kcalResult()
+            }
+        })
+        editTextNumberDecimalHeight.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                Log.i(TAG, "afterTextChangedHeight $s")
+                kcalResult()
+            }
+        })
+        editTextNumberDecimalAge.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                Log.i(TAG, "afterTextChangedAge $s")
+                kcalResult()
+            }
+        })
         seekBarActivityLevel.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Log.i(TAG, "onProgressChanged $progress")
+                Log.i(TAG, "onProgressChangedActivityLevel $progress")
+                kcalResult()
                 //seekBarActivityLevel.text = progress
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
-
         })
+    }
+
+    private fun kcalResult() {
+
+        //Handling the empty string exceptions
+        if (editTextNumberDecimalWeight.text.isEmpty()
+            or editTextNumberDecimalHeight.text.isEmpty()
+            or editTextNumberDecimalAge.text.isEmpty()){
+            return
+            }
+
+        // Getting the values
+        val weight = editTextNumberDecimalWeight.text.toString().toDouble()
+        val height = editTextNumberDecimalHeight.text.toString().toDouble()
+        val age = editTextNumberDecimalAge.text.toString().toDouble()
+        var activityLevel = seekBarActivityLevel.progress
+
+        when (activityLevel) {
+            0 -> activityLevel = 2
+            1 -> activityLevel = 3
+            2 -> activityLevel = 4
+            3 -> activityLevel = 5
+            else -> {
+                activityLevel = 6
+            }
+        }
+
+        //Formula calcule
+        val result = (((10 * weight) + (6.25 * height) - (5 * age)) + 5 )* activityLevel
+
+        //Updating the result text view
+        textViewResult2.text = result.toString()
+
     }
 
     override fun onDestroyView() {
