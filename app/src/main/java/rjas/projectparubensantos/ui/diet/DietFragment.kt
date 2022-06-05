@@ -18,6 +18,7 @@ import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentDietBinding
 
 private const val TAG = "DietFragment"
+private const val ActivityLevel = 2
 
 class DietFragment: Fragment() {
     private var _binding: FragmentDietBinding? = null
@@ -53,7 +54,7 @@ class DietFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //textViewActivityDescription.text = "$ActivityLevel%"
         //Read the input and save to a variable
         editTextNumberDecimalWeight = view.findViewById(R.id.editTextNumberDecimalWeight)
         editTextNumberDecimalHeight = view.findViewById(R.id.editTextNumberDecimalHeight)
@@ -117,16 +118,17 @@ class DietFragment: Fragment() {
             else -> "2 times a day"
         }
         textViewActivityDescription.text = activityLevel
-        //Color update
+       /* //Color update
         val color = ArgbEvaluator().evaluate(
            ActivityDescription.toFloat() / seekBarActivityLevel.max,
-           ContextCompat.getColor(this, R.color.lowExercise),
+
+            ContextCompat.getColor(this, R.color.lowExercise),
             ContextCompat.getColor(this, R.color.highExercise)
-        )
+
+        )*/
     }
 
     private fun kcalResult() {
-
         //Handling the empty string exceptions
         if (editTextNumberDecimalWeight.text.isEmpty()
             or editTextNumberDecimalHeight.text.isEmpty()

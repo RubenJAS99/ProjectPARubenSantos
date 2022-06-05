@@ -4,9 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentSettingsBinding
 import rjas.projectparubensantos.ui.settings.SettingsViewModel
 
@@ -33,6 +38,22 @@ class SettingsFragment: Fragment() {
             textView.text = it
         }
         return root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val switchThemeMode: Switch = view.findViewById(R.id.switchThemeMode)
+
+        switchThemeMode.setOnCheckedChangeListener{buttonView, isChecked ->
+            if(isChecked){
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+            }else{
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+            }
+        }
+
     }
 
     override fun onDestroyView() {

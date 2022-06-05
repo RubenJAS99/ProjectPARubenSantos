@@ -134,10 +134,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:text="1 to 3 days a week"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/seekBarActivityLevel"
         app:layout_constraintStart_toStartOf="@+id/seekBarActivityLevel"
-        app:layout_constraintTop_toBottomOf="@+id/seekBarActivityLevel"
-        tools:text="Sedentary" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBarActivityLevel" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
