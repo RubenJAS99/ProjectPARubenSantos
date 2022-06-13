@@ -1,4 +1,4 @@
-package rjas.projectparubensantos.ui
+package rjas.projectparubensantos
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
