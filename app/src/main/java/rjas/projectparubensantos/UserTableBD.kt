@@ -18,6 +18,6 @@ class UserTableBD(db: SQLiteDatabase) : BDTable(db, NAME) {
         const val USER_ACTIVITY_LEVEL = "activity_level"
         const val USER_PERIOD = "period"
 
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, USER_NAME, USER_WEIGHT, USER_HEIGHT, USER_ACTIVITY_LEVEL, USER_PERIOD)
+        val ALL_COLUMNS = arrayOf(BaseColumns._ID, USER_NAME, USER_WEIGHT, USER_HEIGHT, USER_ACTIVITY_LEVEL, USER_PERIOD)
     }
 }
