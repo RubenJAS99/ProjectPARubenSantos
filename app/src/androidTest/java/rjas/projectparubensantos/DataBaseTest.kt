@@ -1,13 +1,12 @@
 package rjas.projectparubensantos
 
-import androidx.test.platform.app.InstrumentationRegistry
+import android.database.sqlite.SQLiteDatabase
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
+import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -18,6 +17,11 @@ import org.junit.Before
 class DataBaseTest {
     fun appContext() =
         InstrumentationRegistry.getInstrumentation().targetContext
+
+    private fun getWritableDatabase(): SQLiteDatabase {
+        val openHelper = BDappOpenHelper(appContext())
+        return openHelper.writableDatabase
+    }
 
     @Before
     fun deleteDataBase() {
@@ -30,6 +34,19 @@ class DataBaseTest {
         val db = openHelper.readableDatabase
 
         assertTrue(db.isOpen)
+
+        db.close()
+    }
+
+    @Test
+    fun canInsertUser() {
+        val db = getWritableDatabase()
+
+
+        val user = user("Ruben", 72.0,164,1.2,"Bulk")
+        user.id = UserTableBD(db).insert(user.toContentValues())
+
+        //assertNotEquals(-1, user.id)
 
         db.close()
     }
