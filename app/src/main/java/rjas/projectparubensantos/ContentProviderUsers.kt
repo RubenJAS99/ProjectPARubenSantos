@@ -2,6 +2,7 @@ package rjas.projectparubensantos
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.UriMatcher
 import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
@@ -206,5 +207,23 @@ class ContentProviderUsers : ContentProvider() {
         selectionArgs: Array<out String>?
     ): Int {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        const val AUTHORITY = "rjas.projectparubensantos"
+
+        const val URI_USERS = 100
+        const val URI_SPECIFIC_USER = 101
+
+
+        fun getUriMatcher() : UriMatcher {
+            var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
+
+            uriMatcher.addURI(AUTHORITY, UserTableBD.NAME, URI_USERS)
+            uriMatcher.addURI(AUTHORITY, "${UserTableBD.NAME}/#", URI_SPECIFIC_USER)
+
+
+            return uriMatcher
+        }
     }
 }
