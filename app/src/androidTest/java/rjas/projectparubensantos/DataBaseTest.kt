@@ -76,4 +76,20 @@ class DataBaseTest {
 
         db.close()
     }
+
+    @Test
+    fun canDeleteUser() {
+        val db = getWritableDatabase()
+
+        val user = User("Ruben", 72.0,164,1.2,"Bulk")
+        insertUser(db, user)
+
+        val userDeleted = UserTableBD(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${user.id}"))
+
+        assertEquals(1, userDeleted)
+
+        db.close()
+    }
 }
