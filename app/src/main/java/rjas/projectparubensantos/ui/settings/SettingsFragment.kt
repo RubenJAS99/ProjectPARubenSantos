@@ -1,5 +1,6 @@
 package rjas.projectparubensantos.ui.settings
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +12,9 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentSettingsBinding
-import rjas.projectparubensantos.ui.settings.SettingsViewModel
 
 class SettingsFragment: Fragment() {
     private var _binding: FragmentSettingsBinding? = null
@@ -37,20 +38,25 @@ class SettingsFragment: Fragment() {
         settingsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
 
     }
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val switchThemeMode: Switch = view.findViewById(R.id.switchThemeMode)
-
-        switchThemeMode.setOnCheckedChangeListener{buttonView, isChecked ->
+        switchThemeMode.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked){
                 AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+                Snackbar.make(view, "Dark mode on", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
             }else{
                 AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+                Snackbar.make(view, "Dark mode off", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
             }
         }
 

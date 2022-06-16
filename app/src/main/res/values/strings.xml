@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjectPARubenSantos</string>
+    <string name="app_name">Diet app</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -12,7 +12,7 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_diet">Diet</string>
     <string name="menu_progress">Progress</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Login Activity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
