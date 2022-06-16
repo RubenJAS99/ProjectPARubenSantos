@@ -92,4 +92,30 @@ class DataBaseTest {
 
         db.close()
     }
+
+    @Test
+    fun canReadUsers() {
+        val db = getWritableDatabase()
+
+        val user = User("Ruben", 72.0,164,1.2,"Bulk")
+        insertUser(db, user)
+
+        val cursor = UserTableBD(db).query(
+            UserTableBD.ALL_COLUMNS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${user.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val userBD = User.fromCursor(cursor)
+
+        assertEquals(user, userBD)
+
+        db.close()
+    }
 }
