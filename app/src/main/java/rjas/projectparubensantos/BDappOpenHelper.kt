@@ -8,9 +8,9 @@ class BDappOpenHelper(context: Context?) : SQLiteOpenHelper(context, NAME, null,
     override fun onCreate(db: SQLiteDatabase?) {
         requireNotNull(db)
 
-        //UserTableBD(db).cria()
-        //FoodTableBD(db).cria()
-        //ProgressTableBD(db).cria()
+        UserTableBD(db).create()
+        FoodTableBD(db).create()
+        ProgressTableBD(db).create()
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

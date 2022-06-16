@@ -1,6 +1,7 @@
 package rjas.projectparubensantos
 
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.*
@@ -23,6 +24,11 @@ class DataBaseTest {
         return openHelper.writableDatabase
     }
 
+    private fun insertUser(db: SQLiteDatabase, user: User) {
+        user.id = UserTableBD(db).insert(user.toContentValues())
+        assertNotEquals(0, user.id)
+    }
+
     @Before
     fun deleteDataBase() {
         appContext().deleteDatabase(BDappOpenHelper.NAME)
@@ -43,10 +49,30 @@ class DataBaseTest {
         val db = getWritableDatabase()
 
 
-        val user = user("Ruben", 72.0,164,1.2,"Bulk")
+        val user = User("Ruben", 72.0,164,1.2,"Bulk")
         user.id = UserTableBD(db).insert(user.toContentValues())
 
-        //assertNotEquals(-1, user.id)
+        assertNotEquals(0, user.id)
+
+        db.close()
+    }
+
+    @Test
+    fun canModifyUser() {
+        val db = getWritableDatabase()
+
+        val user = User("Ruben", 72.0,164,1.2,"Bulk")
+        insertUser(db, user)
+
+        user.weight = 70.0
+        user.period = "Cut"
+
+        val userModified = UserTableBD(db).update(
+            user.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${user.id}"))
+
+        assertEquals(1, userModified)
 
         db.close()
     }
