@@ -215,7 +215,18 @@ class ContentProviderUsers : ContentProvider() {
      * @throws SQLException
      */
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.writableDatabase
+
+        val id = uri.lastPathSegment
+
+        val deletedRegisters = when (getUriMatcher().match(uri)) {
+            URI_SPECIFIC_USER -> UserTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            else -> 0
+        }
+
+        db.close()
+
+        return deletedRegisters
     }
 
     /**
