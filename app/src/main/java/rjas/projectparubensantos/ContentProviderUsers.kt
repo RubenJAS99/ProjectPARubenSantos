@@ -4,11 +4,11 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
-import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
+import android.provider.BaseColumns
 
 class ContentProviderUsers : ContentProvider() {
-    var db : BDappOpenHelper? = null
+    var dbOpenHelper : BDappOpenHelper? = null
     /**
      * Implement this to initialize your content provider on startup.
      * This method is called for all registered content providers on the
@@ -37,7 +37,7 @@ class ContentProviderUsers : ContentProvider() {
      * @return true if the provider was successfully loaded, false otherwise
      */
     override fun onCreate(): Boolean {
-        db = BDappOpenHelper(context)
+        dbOpenHelper = BDappOpenHelper(context)
 
         return true
     }
@@ -116,7 +116,24 @@ class ContentProviderUsers : ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.readableDatabase
+
+        requireNotNull(projection)
+        val columns = projection as Array<String>
+
+        val argsSelection = selectionArgs as Array<String>?
+
+        val id = uri.lastPathSegment
+
+        val cursor = when (getUriMatcher().match(uri)) {
+            URI_USERS -> UserTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
+            URI_SPECIFIC_USER -> UserTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            else -> null
+        }
+
+        db.close()
+
+        return cursor
     }
 
     /**
@@ -221,13 +238,11 @@ class ContentProviderUsers : ContentProvider() {
         const val UNIQUE_REGISTER = "vnd.android.cursor.item"
         const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
 
-
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 
             uriMatcher.addURI(AUTHORITY, UserTableBD.NAME, URI_USERS)
             uriMatcher.addURI(AUTHORITY, "${UserTableBD.NAME}/#", URI_SPECIFIC_USER)
-
 
             return uriMatcher
         }
