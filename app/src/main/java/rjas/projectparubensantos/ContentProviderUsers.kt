@@ -138,9 +138,12 @@ class ContentProviderUsers : ContentProvider() {
      * @param uri the URI to query.
      * @return a MIME type string, or `null` if there is no type.
      */
-    override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
-    }
+    override fun getType(uri: Uri): String? =
+        when (getUriMatcher().match(uri)) {
+            URI_USERS -> "$UNIQUE_REGISTER/${UserTableBD.NAME}"
+            URI_SPECIFIC_USER -> "$MULTIPLE_REGISTER/${UserTableBD.NAME}"
+            else -> null
+        }
 
     /**
      * Implement this to handle requests to insert a new row. As a courtesy,
@@ -214,6 +217,9 @@ class ContentProviderUsers : ContentProvider() {
 
         const val URI_USERS = 100
         const val URI_SPECIFIC_USER = 101
+
+        const val UNIQUE_REGISTER = "vnd.android.cursor.item"
+        const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
 
 
         fun getUriMatcher() : UriMatcher {
