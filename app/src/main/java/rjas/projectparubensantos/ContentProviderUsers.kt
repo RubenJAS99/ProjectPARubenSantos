@@ -250,7 +250,20 @@ class ContentProviderUsers : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int {
-        TODO("Not yet implemented")
+        requireNotNull(values)
+
+        val db = dbOpenHelper!!.writableDatabase
+
+        val id = uri.lastPathSegment
+
+        val changedRegisters = when (getUriMatcher().match(uri)) {
+            URI_SPECIFIC_USER -> UserTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            else -> 0
+        }
+
+        db.close()
+
+        return changedRegisters
     }
 
     companion object {
