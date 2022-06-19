@@ -29,7 +29,7 @@ class DataBaseTest {
         assertNotEquals(0, user.id)
     }
     private fun insertFood(db: SQLiteDatabase, food: Food) {
-        food.id = UserTableBD(db).insert(food.toContentValues())
+        food.id = FoodTableBD(db).insert(food.toContentValues())
         assertNotEquals(0, food.id)
     }
 
@@ -65,7 +65,7 @@ class DataBaseTest {
         val db = getWritableDatabase()
 
         val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
-        food.id = UserTableBD(db).insert(food.toContentValues())
+        food.id = FoodTableBD(db).insert(food.toContentValues())
 
         assertNotEquals(0, food.id)
 
@@ -92,8 +92,6 @@ class DataBaseTest {
         db.close()
     }
 
-
-
     @Test
     fun canModifyFood() {
         val db = getWritableDatabase()
@@ -109,14 +107,10 @@ class DataBaseTest {
             "${BaseColumns._ID}=?",
             arrayOf("${food.id}"))
 
-        assertEquals(0, foodModified)
+        assertEquals(1, foodModified)
 
         db.close()
     }
-
-
-
-
 
     @Test
     fun canDeleteUser() {
@@ -130,6 +124,22 @@ class DataBaseTest {
             arrayOf("${user.id}"))
 
         assertEquals(1, userDeleted)
+
+        db.close()
+    }
+
+    @Test
+    fun canDeleteFood() {
+        val db = getWritableDatabase()
+
+        val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+        insertFood(db, food)
+
+        val foodDeleted = FoodTableBD(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${food.id}"))
+
+        assertEquals(1, foodDeleted)
 
         db.close()
     }
