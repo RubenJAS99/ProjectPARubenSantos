@@ -7,7 +7,7 @@ class FoodTableBD(db: SQLiteDatabase) : BDTable(db, NAME) {
     override fun create() {
         db.execSQL("CREATE TABLE $name (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$FOOD_NAME TEXT NOT NULL, $FOOD_TYPE TEXT NOT NULL, $FOOD_KCAL INTEGER NOT NULL," +
-                "$FOOD_PROTEIN INTEGER NOT NULL, $FOOD_FAT INTEGER NOT NULL, $FOOD_HC INTEGER NOT NULL)")
+                "$FOOD_PROTEIN DOUBLE NOT NULL, $FOOD_FAT DOUBLE NOT NULL, $FOOD_HC DOUBLE NOT NULL)")
     }
 
     companion object {
