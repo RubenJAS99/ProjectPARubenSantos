@@ -25,7 +25,7 @@
         </activity>
         <provider
             android:authorities="rjas.projectparubensantos"
-            android:name=".ContentProviderUsers"
+            android:name=".ContentProvider"
             android:exported="false" />
     </application>
 

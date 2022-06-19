@@ -7,7 +7,7 @@ import android.database.Cursor
 import android.net.Uri
 import android.provider.BaseColumns
 
-class ContentProviderUsers : ContentProvider() {
+class ContentProvider : ContentProvider() {
     var dbOpenHelper : BDappOpenHelper? = null
     /**
      * Implement this to initialize your content provider on startup.
@@ -128,6 +128,8 @@ class ContentProviderUsers : ContentProvider() {
         val cursor = when (getUriMatcher().match(uri)) {
             URI_USERS -> UserTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
             URI_SPECIFIC_USER -> UserTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_FOODS -> FoodTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
+            URI_SPECIFIC_FOOD -> FoodTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
             else -> null
         }
 
@@ -159,6 +161,8 @@ class ContentProviderUsers : ContentProvider() {
         when (getUriMatcher().match(uri)) {
             URI_USERS -> "$UNIQUE_REGISTER/${UserTableBD.NAME}"
             URI_SPECIFIC_USER -> "$MULTIPLE_REGISTER/${UserTableBD.NAME}"
+            URI_FOODS -> "$UNIQUE_REGISTER/${FoodTableBD.NAME}"
+            URI_SPECIFIC_FOOD -> "$MULTIPLE_REGISTER/${FoodTableBD.NAME}"
             else -> null
         }
 
@@ -181,6 +185,7 @@ class ContentProviderUsers : ContentProvider() {
 
         val id = when (getUriMatcher().match(uri)) {
             URI_USERS -> UserTableBD(db).insert(values)
+            URI_FOODS -> FoodTableBD(db).insert(values)
             else -> -1
         }
 
@@ -221,6 +226,8 @@ class ContentProviderUsers : ContentProvider() {
 
         val deletedRegisters = when (getUriMatcher().match(uri)) {
             URI_SPECIFIC_USER -> UserTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_SPECIFIC_FOOD -> FoodTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+
             else -> 0
         }
 
@@ -258,6 +265,8 @@ class ContentProviderUsers : ContentProvider() {
 
         val changedRegisters = when (getUriMatcher().match(uri)) {
             URI_SPECIFIC_USER -> UserTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_SPECIFIC_FOOD -> FoodTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+
             else -> 0
         }
 
@@ -271,6 +280,8 @@ class ContentProviderUsers : ContentProvider() {
 
         const val URI_USERS = 100
         const val URI_SPECIFIC_USER = 101
+        const val URI_FOODS = 200
+        const val URI_SPECIFIC_FOOD = 201
 
         const val UNIQUE_REGISTER = "vnd.android.cursor.item"
         const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
@@ -280,6 +291,8 @@ class ContentProviderUsers : ContentProvider() {
 
             uriMatcher.addURI(AUTHORITY, UserTableBD.NAME, URI_USERS)
             uriMatcher.addURI(AUTHORITY, "${UserTableBD.NAME}/#", URI_SPECIFIC_USER)
+            uriMatcher.addURI(AUTHORITY, FoodTableBD.NAME, URI_FOODS)
+            uriMatcher.addURI(AUTHORITY, "${FoodTableBD.NAME}/#", URI_SPECIFIC_FOOD)
 
             return uriMatcher
         }
