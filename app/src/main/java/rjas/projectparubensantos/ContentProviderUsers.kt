@@ -4,11 +4,11 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
-import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
+import android.provider.BaseColumns
 
 class ContentProviderUsers : ContentProvider() {
-    var db : BDappOpenHelper? = null
+    var dbOpenHelper : BDappOpenHelper? = null
     /**
      * Implement this to initialize your content provider on startup.
      * This method is called for all registered content providers on the
@@ -37,7 +37,7 @@ class ContentProviderUsers : ContentProvider() {
      * @return true if the provider was successfully loaded, false otherwise
      */
     override fun onCreate(): Boolean {
-        db = BDappOpenHelper(context)
+        dbOpenHelper = BDappOpenHelper(context)
 
         return true
     }
@@ -116,7 +116,24 @@ class ContentProviderUsers : ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.readableDatabase
+
+        requireNotNull(projection)
+        val columns = projection as Array<String>
+
+        val argsSelection = selectionArgs as Array<String>?
+
+        val id = uri.lastPathSegment
+
+        val cursor = when (getUriMatcher().match(uri)) {
+            URI_USERS -> UserTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
+            URI_SPECIFIC_USER -> UserTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            else -> null
+        }
+
+        db.close()
+
+        return cursor
     }
 
     /**
@@ -138,9 +155,12 @@ class ContentProviderUsers : ContentProvider() {
      * @param uri the URI to query.
      * @return a MIME type string, or `null` if there is no type.
      */
-    override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
-    }
+    override fun getType(uri: Uri): String? =
+        when (getUriMatcher().match(uri)) {
+            URI_USERS -> "$UNIQUE_REGISTER/${UserTableBD.NAME}"
+            URI_SPECIFIC_USER -> "$MULTIPLE_REGISTER/${UserTableBD.NAME}"
+            else -> null
+        }
 
     /**
      * Implement this to handle requests to insert a new row. As a courtesy,
@@ -155,7 +175,20 @@ class ContentProviderUsers : ContentProvider() {
      * @return The URI for the newly inserted item.
      */
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.writableDatabase
+
+        requireNotNull(values)
+
+        val id = when (getUriMatcher().match(uri)) {
+            URI_USERS -> UserTableBD(db).insert(values)
+            else -> -1
+        }
+
+        db.close()
+
+        if (id == -1L) return null
+
+        return Uri.withAppendedPath(uri, "$id")
     }
 
     /**
@@ -182,7 +215,18 @@ class ContentProviderUsers : ContentProvider() {
      * @throws SQLException
      */
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.writableDatabase
+
+        val id = uri.lastPathSegment
+
+        val deletedRegisters = when (getUriMatcher().match(uri)) {
+            URI_SPECIFIC_USER -> UserTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            else -> 0
+        }
+
+        db.close()
+
+        return deletedRegisters
     }
 
     /**
@@ -206,7 +250,20 @@ class ContentProviderUsers : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int {
-        TODO("Not yet implemented")
+        requireNotNull(values)
+
+        val db = dbOpenHelper!!.writableDatabase
+
+        val id = uri.lastPathSegment
+
+        val changedRegisters = when (getUriMatcher().match(uri)) {
+            URI_SPECIFIC_USER -> UserTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            else -> 0
+        }
+
+        db.close()
+
+        return changedRegisters
     }
 
     companion object {
@@ -215,13 +272,14 @@ class ContentProviderUsers : ContentProvider() {
         const val URI_USERS = 100
         const val URI_SPECIFIC_USER = 101
 
+        const val UNIQUE_REGISTER = "vnd.android.cursor.item"
+        const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
 
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 
             uriMatcher.addURI(AUTHORITY, UserTableBD.NAME, URI_USERS)
             uriMatcher.addURI(AUTHORITY, "${UserTableBD.NAME}/#", URI_SPECIFIC_USER)
-
 
             return uriMatcher
         }
