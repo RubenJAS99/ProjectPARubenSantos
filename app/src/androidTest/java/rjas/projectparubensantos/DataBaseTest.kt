@@ -169,4 +169,30 @@ class DataBaseTest {
 
         db.close()
     }
+
+    @Test
+    fun canReadFoods() {
+        val db = getWritableDatabase()
+
+        val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+        insertFood(db, food)
+
+        val cursor = FoodTableBD(db).query(
+            FoodTableBD.ALL_COLUMNS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${food.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val foodBD = Food.fromCursor(cursor)
+
+        assertEquals(food, foodBD)
+
+        db.close()
+    }
 }
