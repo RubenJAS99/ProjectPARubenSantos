@@ -58,6 +58,22 @@ class DataBaseTest {
     }
 
     @Test
+    fun canInsertFood() {
+        val db = getWritableDatabase()
+
+
+        val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+        food.id = UserTableBD(db).insert(food.toContentValues())
+
+        assertNotEquals(0, food.id)
+
+        db.close()
+    }
+
+
+
+
+    @Test
     fun canModifyUser() {
         val db = getWritableDatabase()
 
