@@ -28,6 +28,10 @@ class DataBaseTest {
         user.id = UserTableBD(db).insert(user.toContentValues())
         assertNotEquals(0, user.id)
     }
+    private fun insertFood(db: SQLiteDatabase, food: Food) {
+        food.id = UserTableBD(db).insert(food.toContentValues())
+        assertNotEquals(0, food.id)
+    }
 
     @Before
     fun deleteDataBase() {
@@ -48,7 +52,6 @@ class DataBaseTest {
     fun canInsertUser() {
         val db = getWritableDatabase()
 
-
         val user = User("Ruben", 72.0,164,1.2,"Bulk")
         user.id = UserTableBD(db).insert(user.toContentValues())
 
@@ -61,7 +64,6 @@ class DataBaseTest {
     fun canInsertFood() {
         val db = getWritableDatabase()
 
-
         val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
         food.id = UserTableBD(db).insert(food.toContentValues())
 
@@ -69,9 +71,6 @@ class DataBaseTest {
 
         db.close()
     }
-
-
-
 
     @Test
     fun canModifyUser() {
@@ -92,6 +91,32 @@ class DataBaseTest {
 
         db.close()
     }
+
+
+
+    @Test
+    fun canModifyFood() {
+        val db = getWritableDatabase()
+
+        val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+        insertFood(db, food)
+
+        food.kcal = 351
+        food.protein = 7.3
+
+        val foodModified = FoodTableBD(db).update(
+            food.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${food.id}"))
+
+        assertEquals(0, foodModified)
+
+        db.close()
+    }
+
+
+
+
 
     @Test
     fun canDeleteUser() {
