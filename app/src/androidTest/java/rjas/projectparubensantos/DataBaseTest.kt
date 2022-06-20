@@ -170,6 +170,21 @@ class DataBaseTest {
 
         db.close()
     }
+    @Test
+    fun canDeleteProgress() {
+        val db = getWritableDatabase()
+
+        val progress = Progress(72.0,71.8,"Cut")
+        insertProgress(db, progress)
+
+        val progressDeleted = ProgressTableBD(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${progress.id}"))
+
+        assertEquals(0, progressDeleted)
+
+        db.close()
+    }
 
     @Test
     fun canReadUsers() {
