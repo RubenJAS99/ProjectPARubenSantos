@@ -237,4 +237,29 @@ class DataBaseTest {
 
         db.close()
     }
+    @Test
+    fun canReadProgress() {
+        val db = getWritableDatabase()
+
+        val progress = Progress(72.0,71.8,"Cut")
+        insertProgress(db, progress)
+
+        val cursor = ProgressTableBD(db).query(
+            ProgressTableBD.ALL_COLUMNS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${progress.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val progressBD = Progress.fromCursor(cursor)
+
+        assertEquals(progress, progressBD)
+
+        db.close()
+    }
 }
