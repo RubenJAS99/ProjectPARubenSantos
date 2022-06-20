@@ -26,11 +26,11 @@ class DataBaseTest {
 
     private fun insertUser(db: SQLiteDatabase, user: User) {
         user.id = UserTableBD(db).insert(user.toContentValues())
-        assertNotEquals(0, user.id)
+        assertNotEquals(-1, user.id)
     }
     private fun insertFood(db: SQLiteDatabase, food: Food) {
         food.id = FoodTableBD(db).insert(food.toContentValues())
-        assertNotEquals(0, food.id)
+        assertNotEquals(-1, food.id)
     }
     private fun insertProgress(db: SQLiteDatabase, progress: Progress) {
         progress.id = ProgressTableBD(db).insert(progress.toContentValues())
@@ -57,9 +57,7 @@ class DataBaseTest {
         val db = getWritableDatabase()
 
         val user = User("Ruben", 72.0,164,1.2,"Bulk")
-        user.id = UserTableBD(db).insert(user.toContentValues())
-
-        assertNotEquals(0, user.id)
+        insertUser(db, user)
 
         db.close()
     }
@@ -69,9 +67,7 @@ class DataBaseTest {
         val db = getWritableDatabase()
 
         val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
-        food.id = FoodTableBD(db).insert(food.toContentValues())
-
-        assertNotEquals(0, food.id)
+        insertFood(db, food)
 
         db.close()
     }
@@ -80,9 +76,7 @@ class DataBaseTest {
         val db = getWritableDatabase()
 
         val progress = Progress(72.0,71.8,"Cut")
-        progress.id = ProgressTableBD(db).insert(progress.toContentValues())
-
-        assertNotEquals(0, progress.id)
+        insertProgress(db, progress)
 
         db.close()
     }
@@ -123,6 +117,24 @@ class DataBaseTest {
             arrayOf("${food.id}"))
 
         assertEquals(1, foodModified)
+
+        db.close()
+    }
+    @Test
+    fun canModifyProgress() {
+        val db = getWritableDatabase()
+
+        val progress = Progress(72.0,71.8,"Cut")
+        insertProgress(db, progress)
+
+        progress.currentWeight = 71.9
+
+        val progressModified = ProgressTableBD(db).update(
+            progress.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${progress.id}"))
+
+        assertEquals(0, progressModified)
 
         db.close()
     }
