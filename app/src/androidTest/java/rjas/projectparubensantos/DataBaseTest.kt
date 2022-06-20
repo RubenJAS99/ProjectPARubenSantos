@@ -32,6 +32,10 @@ class DataBaseTest {
         food.id = FoodTableBD(db).insert(food.toContentValues())
         assertNotEquals(0, food.id)
     }
+    private fun insertProgress(db: SQLiteDatabase, progress: Progress) {
+        progress.id = ProgressTableBD(db).insert(progress.toContentValues())
+        assertNotEquals(0, progress.id)
+    }
 
     @Before
     fun deleteDataBase() {
@@ -68,6 +72,17 @@ class DataBaseTest {
         food.id = FoodTableBD(db).insert(food.toContentValues())
 
         assertNotEquals(0, food.id)
+
+        db.close()
+    }
+    @Test
+    fun canInsertProgress() {
+        val db = getWritableDatabase()
+
+        val progress = Progress(72.0,71.8,"Cut")
+        progress.id = ProgressTableBD(db).insert(progress.toContentValues())
+
+        assertNotEquals(0, progress.id)
 
         db.close()
     }
