@@ -253,7 +253,7 @@ class DataBaseTest {
             null
         )
 
-        assertEquals(1, cursor.count)
+        assertEquals(0, cursor.count)
         assertTrue(cursor.moveToNext())
 
         val progressBD = Progress.fromCursor(cursor)
