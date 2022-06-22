@@ -17,6 +17,10 @@
             android:icon="@drawable/ic_baseline_pie_chart_24"
             android:title="@string/menu_diet" />
         <item
+            android:id="@+id/nav_food"
+            android:icon="@drawable/ic_baseline_pie_chart_24"
+            android:title="@string/menu_food" />
+        <item
             android:id="@+id/nav_progress"
             android:icon="@drawable/ic_baseline_insert_chart_24"
             android:title="@string/menu_progress" />

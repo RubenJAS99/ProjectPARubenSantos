@@ -17,6 +17,6 @@ class ProgressTableBD(db: SQLiteDatabase) : BDTable(db, NAME) {
         const val CURRENT_WEIGHT = "currentWeight"
         const val USER_PERIOD = "period"
 
-        val ALL_COLUMNS = arrayOf(BaseColumns._ID, PROGRESS_DATE, LAST_WEIGHT, CURRENT_WEIGHT, USER_PERIOD)
+        val ALL_COLUMNS = arrayOf(BaseColumns._ID, /*PROGRESS_DATE,*/ LAST_WEIGHT, CURRENT_WEIGHT, USER_PERIOD)
     }
 }

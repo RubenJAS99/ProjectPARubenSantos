@@ -12,6 +12,8 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_diet">Diet</string>
     <string name="menu_progress">Progress</string>
+    <string name="menu_food">Food</string>
+
     <string name="title_activity_login">Login Activity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

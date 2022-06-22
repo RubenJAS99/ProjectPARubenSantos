@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_profile,
                 R.id.nav_diet,
                 R.id.nav_progress,
-                R.id.nav_settings
+                R.id.nav_settings,
+                R.id.nav_food
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

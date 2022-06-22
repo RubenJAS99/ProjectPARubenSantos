@@ -41,4 +41,10 @@
         android:label="@string/action_settings"
         tools:layout="@layout/fragment_settings" />
 
+    <fragment
+        android:id="@+id/nav_food"
+        android:name="rjas.projectparubensantos.ui.food.FoodFragment"
+        android:label="@string/menu_food"
+        tools:layout="@layout/fragment_food" />
+
 </navigation>
