@@ -295,6 +295,9 @@ class ContentProvider : ContentProvider() {
         const val UNIQUE_REGISTER = "vnd.android.cursor.item"
         const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
 
+        private val BASE_ADDRESS = Uri.parse("content://$AUTHORITY")
+        val FOOD_ADDRESS = Uri.withAppendedPath(BASE_ADDRESS, FoodTableBD.NAME)
+
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 

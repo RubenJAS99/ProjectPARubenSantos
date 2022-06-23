@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
+import rjas.projectparubensantos.ContentProvider
+import rjas.projectparubensantos.FoodTableBD
 import rjas.projectparubensantos.databinding.FragmentFoodBinding
 
 class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -33,9 +36,7 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.buttonSecond.setOnClickListener {
-//            findNavController().navigate(R.id.action_ListaLivros_to_MenuPrincipal)
-//        }
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD, null, this)
     }
 
     override fun onDestroyView() {
@@ -53,9 +54,16 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param args Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
-    }
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProvider.FOOD_ADDRESS,
+            FoodTableBD.ALL_COLUMNS,
+            null,
+            null,
+            "${FoodTableBD.FOOD_NAME}"
+        )
+
 
     /**
      * Called when a previously created loader has finished its load.  Note
@@ -116,5 +124,9 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        const val ID_LOADER_FOOD = 0
     }
 }
