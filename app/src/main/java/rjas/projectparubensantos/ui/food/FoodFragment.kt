@@ -41,7 +41,7 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD, null, this)
 
-        adapterFoods = AdapterFoods()
+        adapterFoods = AdapterFoods(this)
         binding.recyclerViewFood.adapter = adapterFoods
         binding.recyclerViewFood.layoutManager = LinearLayoutManager(requireContext())
     }

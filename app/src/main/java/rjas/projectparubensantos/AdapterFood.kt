@@ -4,8 +4,9 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import rjas.projectparubensantos.ui.food.FoodFragment
 
-class AdapterFoods : RecyclerView.Adapter<AdapterFoods.ViewHolderFood>() {
+class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoods.ViewHolderFood>() {
     var cursor: Cursor? = null
         get() = field
         set(value) {
@@ -41,7 +42,8 @@ class AdapterFoods : RecyclerView.Adapter<AdapterFoods.ViewHolderFood>() {
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderFood {
-        TODO("Not yet implemented")
+        val foodItem = fragment.layoutInflater.inflate(R.layout.food_item, parent, false)
+        return ViewHolderFood(foodItem)
     }
 
     /**
