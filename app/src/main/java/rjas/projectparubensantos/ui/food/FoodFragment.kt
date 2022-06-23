@@ -12,11 +12,14 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.FoodTableBD
+import androidx.recyclerview.widget.LinearLayoutManager
+import rjas.projectparubensantos.AdapterFoods
 import rjas.projectparubensantos.databinding.FragmentFoodBinding
 
 class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentFoodBinding? = null
+    private var adapterFoods : AdapterFoods? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -37,6 +40,10 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         super.onViewCreated(view, savedInstanceState)
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD, null, this)
+
+        adapterFoods = AdapterFoods()
+        binding.recyclerViewFood.adapter = adapterFoods
+        binding.recyclerViewFood.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun onDestroyView() {
