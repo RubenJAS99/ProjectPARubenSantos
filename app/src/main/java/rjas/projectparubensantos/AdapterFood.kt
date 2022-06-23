@@ -3,7 +3,9 @@ package rjas.projectparubensantos
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import org.w3c.dom.Text
 import rjas.projectparubensantos.ui.food.FoodFragment
 
 class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoods.ViewHolderFood>() {
@@ -15,9 +17,27 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
                 notifyDataSetChanged()
             }
         }
-    class ViewHolderFood(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    }
+    class ViewHolderFood(foodItem: View) : RecyclerView.ViewHolder(foodItem) {
+        val textViewName = foodItem.findViewById<TextView>(R.id.textViewName)
+        val textViewType = foodItem.findViewById<TextView>(R.id.textViewType)
+        val textViewKcal = foodItem.findViewById<TextView>(R.id.textViewKcal)
+        val textViewProtein = foodItem.findViewById<TextView>(R.id.textViewProtein)
+        val textViewFat = foodItem.findViewById<TextView>(R.id.textViewFat)
+        val textViewCarbohydrate = foodItem.findViewById<TextView>(R.id.textViewCarbohydrate)
 
+        var food: Food? = null
+            get() = field
+            set(value: Food?) {
+                field = value
+
+                textViewName.text = food?.name ?: ""
+                textViewType.text = food?.type ?: ""
+                textViewKcal.text = (food?.kcal ?: "").toString()
+                textViewProtein.text = (food?.protein ?: "").toString()
+                textViewFat.text = (food?.fat ?: "").toString()
+                textViewCarbohydrate.text = (food?.carbohydrate ?: "").toString()
+            }
+    }
     /**
      * Called when RecyclerView needs a new [ViewHolder] of the given type to represent
      * an item.
@@ -68,7 +88,8 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderFood, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.moveToPosition(position)
+        holder.food = Food.fromCursor(cursor!!)
     }
 
     /**
