@@ -130,6 +130,8 @@ class ContentProvider : ContentProvider() {
             URI_SPECIFIC_USER -> UserTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
             URI_FOODS -> FoodTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
             URI_SPECIFIC_FOOD -> FoodTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_PROGRESS -> ProgressTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
+            URI_SPECIFIC_PROGRESS -> ProgressTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
             else -> null
         }
 
@@ -163,6 +165,8 @@ class ContentProvider : ContentProvider() {
             URI_SPECIFIC_USER -> "$MULTIPLE_REGISTER/${UserTableBD.NAME}"
             URI_FOODS -> "$UNIQUE_REGISTER/${FoodTableBD.NAME}"
             URI_SPECIFIC_FOOD -> "$MULTIPLE_REGISTER/${FoodTableBD.NAME}"
+            URI_PROGRESS -> "$UNIQUE_REGISTER/${ProgressTableBD.NAME}"
+            URI_SPECIFIC_PROGRESS -> "$MULTIPLE_REGISTER/${ProgressTableBD.NAME}"
             else -> null
         }
 
@@ -186,6 +190,7 @@ class ContentProvider : ContentProvider() {
         val id = when (getUriMatcher().match(uri)) {
             URI_USERS -> UserTableBD(db).insert(values)
             URI_FOODS -> FoodTableBD(db).insert(values)
+            URI_PROGRESS -> ProgressTableBD(db).insert(values)
             else -> -1
         }
 
@@ -227,6 +232,7 @@ class ContentProvider : ContentProvider() {
         val deletedRegisters = when (getUriMatcher().match(uri)) {
             URI_SPECIFIC_USER -> UserTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
             URI_SPECIFIC_FOOD -> FoodTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_SPECIFIC_PROGRESS -> ProgressTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
 
             else -> 0
         }
@@ -266,6 +272,7 @@ class ContentProvider : ContentProvider() {
         val changedRegisters = when (getUriMatcher().match(uri)) {
             URI_SPECIFIC_USER -> UserTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
             URI_SPECIFIC_FOOD -> FoodTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_SPECIFIC_PROGRESS -> ProgressTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
 
             else -> 0
         }
@@ -282,6 +289,8 @@ class ContentProvider : ContentProvider() {
         const val URI_SPECIFIC_USER = 101
         const val URI_FOODS = 200
         const val URI_SPECIFIC_FOOD = 201
+        const val URI_PROGRESS = 300
+        const val URI_SPECIFIC_PROGRESS = 301
 
         const val UNIQUE_REGISTER = "vnd.android.cursor.item"
         const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
@@ -293,6 +302,8 @@ class ContentProvider : ContentProvider() {
             uriMatcher.addURI(AUTHORITY, "${UserTableBD.NAME}/#", URI_SPECIFIC_USER)
             uriMatcher.addURI(AUTHORITY, FoodTableBD.NAME, URI_FOODS)
             uriMatcher.addURI(AUTHORITY, "${FoodTableBD.NAME}/#", URI_SPECIFIC_FOOD)
+            uriMatcher.addURI(AUTHORITY, ProgressTableBD.NAME, URI_PROGRESS)
+            uriMatcher.addURI(AUTHORITY, "${ProgressTableBD.NAME}/#", URI_SPECIFIC_PROGRESS)
 
             return uriMatcher
         }
