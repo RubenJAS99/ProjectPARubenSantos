@@ -7,43 +7,43 @@
 // Fragments pages
     <fragment
         android:id="@+id/nav_home"
-        android:name="rjas.projectparubensantos.ui.home.HomeFragment"
+        android:name="rjas.projectparubensantos.fragments.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="rjas.projectparubensantos.ui.gallery.GalleryFragment"
+        android:name="rjas.projectparubensantos.fragments.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="rjas.projectparubensantos.ui.profile.ProfileFragment"
+        android:name="rjas.projectparubensantos.fragments.profile.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_diet"
-        android:name="rjas.projectparubensantos.ui.diet.DietFragment"
+        android:name="rjas.projectparubensantos.fragments.diet.DietFragment"
         android:label="@string/menu_diet"
         tools:layout="@layout/fragment_diet" />
 
     <fragment
         android:id="@+id/nav_progress"
-        android:name="rjas.projectparubensantos.ui.progress.ProgressFragment"
+        android:name="rjas.projectparubensantos.fragments.progress.ProgressFragment"
         android:label="@string/menu_progress"
         tools:layout="@layout/fragment_progress" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="rjas.projectparubensantos.ui.settings.SettingsFragment"
+        android:name="rjas.projectparubensantos.fragments.settings.SettingsFragment"
         android:label="@string/action_settings"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_food"
-        android:name="rjas.projectparubensantos.ui.food.FoodFragment"
+        android:name="rjas.projectparubensantos.fragments.food.FoodFragment"
         android:label="@string/menu_food"
         tools:layout="@layout/fragment_food" />
 

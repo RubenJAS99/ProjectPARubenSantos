@@ -6,6 +6,10 @@ import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 import android.provider.BaseColumns
+import rjas.projectparubensantos.bd.BDappOpenHelper
+import rjas.projectparubensantos.food.FoodTableBD
+import rjas.projectparubensantos.progress.ProgressTableBD
+import rjas.projectparubensantos.user.UserTableBD
 
 class ContentProvider : ContentProvider() {
     var dbOpenHelper : BDappOpenHelper? = null

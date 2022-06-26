@@ -8,6 +8,13 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import rjas.projectparubensantos.bd.BDappOpenHelper
+import rjas.projectparubensantos.food.Food
+import rjas.projectparubensantos.food.FoodTableBD
+import rjas.projectparubensantos.progress.Progress
+import rjas.projectparubensantos.progress.ProgressTableBD
+import rjas.projectparubensantos.user.User
+import rjas.projectparubensantos.user.UserTableBD
 
 /**
  * Instrumented test, which will execute on an Android device.
