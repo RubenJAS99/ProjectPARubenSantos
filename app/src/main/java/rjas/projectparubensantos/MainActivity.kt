@@ -27,6 +27,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+    var idMainMenu = R.menu.main
+        get() = field
+        set(value) {
+            if (value != field) {
+                field = value
+                invalidateOptionsMenu()
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

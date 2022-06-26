@@ -281,17 +281,17 @@ class ContentProvider : ContentProvider() {
     }
 
     companion object {
-        const val AUTHORITY = "rjas.projectparubensantos"
+        private const val AUTHORITY = "rjas.projectparubensantos"
 
-        const val URI_USERS = 100
-        const val URI_SPECIFIC_USER = 101
-        const val URI_FOODS = 200
-        const val URI_SPECIFIC_FOOD = 201
-        const val URI_PROGRESS = 300
-        const val URI_SPECIFIC_PROGRESS = 301
+        private const val URI_USERS = 100
+        private const val URI_SPECIFIC_USER = 101
+        private const val URI_FOODS = 200
+        private const val URI_SPECIFIC_FOOD = 201
+        private const val URI_PROGRESS = 300
+        private const val URI_SPECIFIC_PROGRESS = 301
 
-        const val UNIQUE_REGISTER = "vnd.android.cursor.item"
-        const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
+        private const val UNIQUE_REGISTER = "vnd.android.cursor.item"
+        private const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
 
         private val BASE_ADDRESS = Uri.parse("content://$AUTHORITY")
         val FOOD_ADDRESS = Uri.withAppendedPath(BASE_ADDRESS, FoodTableBD.NAME)

@@ -14,6 +14,7 @@ import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.FoodTableBD
 import androidx.recyclerview.widget.LinearLayoutManager
 import rjas.projectparubensantos.AdapterFoods
+import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.databinding.FragmentFoodBinding
 
 class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -44,6 +45,7 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         adapterFoods = AdapterFoods(this)
         binding.recyclerViewFood.adapter = adapterFoods
         binding.recyclerViewFood.layoutManager = LinearLayoutManager(requireContext())
+
     }
 
     override fun onDestroyView() {
