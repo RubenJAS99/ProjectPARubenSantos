@@ -47,4 +47,11 @@
         android:label="@string/menu_food"
         tools:layout="@layout/fragment_food" />
 
+    <fragment
+        android:id="@+id/nav_InsertModifyFood"
+        android:name="rjas.projectparubensantos.fragments.insertModify.InsertModifyFood"
+        android:label="@string/InsertModifyFood"
+        tools:layout="@layout/fragment_insert_modify_food" >
+    </fragment>
+
 </navigation>
