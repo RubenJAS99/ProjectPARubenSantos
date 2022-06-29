@@ -18,7 +18,7 @@
     <string name="modify">Modify</string>
     <string name="delete">Delete</string>
 
-    <string name="InsertModifyFood">Insert or modify</string>
+    <string name="InsertModifyFood">InsertOrModify</string>
 
     <string name="title_activity_login">Login Activity</string>
     <string name="prompt_email">Email</string>

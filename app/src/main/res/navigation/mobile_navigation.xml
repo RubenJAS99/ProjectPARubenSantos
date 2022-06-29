@@ -52,6 +52,10 @@
         android:name="rjas.projectparubensantos.fragments.insertModify.InsertModifyFood"
         android:label="@string/InsertModifyFood"
         tools:layout="@layout/fragment_insert_modify_food" >
+        <action
+            android:id="@+id/action_fragment_insert_modify_food_to_fragment_food"
+            app:destination="@id/nav_food" />
     </fragment>
+
 
 </navigation>
