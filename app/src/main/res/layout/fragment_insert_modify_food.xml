@@ -1,58 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.insertModify.InsertModifyFood">
-
-    <com.google.android.material.textfield.TextInputLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp">
+        android:layout_height="match_parent"
+        tools:context=".fragments.insertModify.InsertModifyFood">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextTitulo"
-            android:layout_width="match_parent"
+        <!--Left Components-->
+        <TextView
+            android:id="@+id/textViewFood"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/titulo"
-            android:textColorHint="#616161"
-            tools:ignore="TextContrastCheck" />
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/Food"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp">
+        <TextView
+            android:id="@+id/textViewFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/FoodName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFood" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextAutor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/Autor"
-                android:textColorHint="#616161"
-                tools:ignore="TextContrastCheck" />
+        <TextView
+            android:id="@+id/textViewFoodType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/FoodType"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodName" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                android:text="@string/Categoria"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        <TextView
+            android:id="@+id/textViewFoodKcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/FoodKcal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodType" />
 
-            <Spinner
-                android:id="@+id/spinnerCategorias"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:minHeight="48dp"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/textViewFoodProtein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/FoodProtein"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodKcal" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textViewFoodFat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/FoodFat"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodProtein" />
+
+        <TextView
+            android:id="@+id/textViewFoodCarbohydrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/FoodCarbohydrate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodFat" />
+
+        <!--Right Components-->
+
+        <EditText
+            android:id="@+id/editTextNumberDecimalFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/FoodName2"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodName"
+            app:layout_constraintStart_toEndOf="@+id/textViewFoodName"
+            app:layout_constraintTop_toTopOf="@+id/textViewFoodName" />
+
+    <Spinner
+        android:id="@+id/spinnerFoodType"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:hint="@string/FoodType2"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodType"
+        app:layout_constraintStart_toEndOf="@+id/textViewFoodType"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodType"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+            android:id="@+id/editTextNumberFoodKcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:ems="10"
+            android:hint="108"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodKcal"
+            app:layout_constraintStart_toEndOf="@+id/textViewFoodKcal"
+            app:layout_constraintTop_toTopOf="@+id/textViewFoodKcal" />
+
+        <EditText
+            android:id="@+id/editTextNumberFoodProtein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:ems="10"
+            android:hint="24.1"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodProtein"
+            app:layout_constraintStart_toEndOf="@+id/textViewFoodProtein"
+            app:layout_constraintTop_toTopOf="@+id/textViewFoodProtein" />
+
+        <EditText
+            android:id="@+id/editTextNumberFoodFat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:ems="10"
+            android:hint="1.2"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodFat"
+            app:layout_constraintStart_toEndOf="@+id/textViewFoodFat"
+            app:layout_constraintTop_toTopOf="@+id/textViewFoodFat" />
+
+        <EditText
+            android:id="@+id/editTextNumberFoodCarbohydrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodCarbohydrate"
+            app:layout_constraintStart_toEndOf="@+id/textViewFoodCarbohydrate"
+            app:layout_constraintTop_toTopOf="@+id/textViewFoodCarbohydrate" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

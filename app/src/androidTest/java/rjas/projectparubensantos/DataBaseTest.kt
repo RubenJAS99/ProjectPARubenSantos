@@ -46,7 +46,7 @@ class DataBaseTest {
 
     @Before
     fun deleteDataBase() {
-        //appContext().deleteDatabase(BDappOpenHelper.NAME)
+        appContext().deleteDatabase(BDappOpenHelper.NAME)
     }
 
     @Test

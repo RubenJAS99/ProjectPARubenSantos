@@ -18,7 +18,25 @@
     <string name="modify">Modify</string>
     <string name="delete">Delete</string>
 
-    <string name="InsertModifyFood">InsertOrModify</string>
+    <string name="InsertModifyFood">Insert or Modify</string>
+
+    <string name="Weight">Weight:</string>
+    <string name="Height">Height:</string>
+    <string name="Age">Age:</string>
+    <string name="Activity">Activity:</string>
+    <string name="Result">Result:</string>
+    <string name="ActivityDescription">1 to 3 days per week</string>
+
+    <string name="Food">Food</string>
+    <string name="FoodName">Name:</string>
+    <string name="FoodName2">Chicken</string>
+    <string name="FoodType">Type:</string>
+    <string name="FoodType2">Protein</string>
+    <string name="FoodKcal">Kcal:</string>
+    <string name="FoodProtein">Protein:</string>
+    <string name="FoodFat">Fat:</string>
+    <string name="FoodCarbohydrate">Carbs:</string>
+
 
     <string name="title_activity_login">Login Activity</string>
     <string name="prompt_email">Email</string>
