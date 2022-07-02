@@ -38,7 +38,7 @@ class DietFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dietViewModel =
-            ViewModelProvider(this).get(FoodViewModel::class.java)
+            ViewModelProvider(this).get(DietViewModel::class.java)
 
         _binding = FragmentDietBinding.inflate(inflater, container, false)
       val root: View = binding.root

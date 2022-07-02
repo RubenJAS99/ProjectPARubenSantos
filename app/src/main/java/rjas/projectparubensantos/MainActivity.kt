@@ -18,14 +18,18 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import rjas.projectparubensantos.databinding.ActivityMainBinding
-
+import rjas.projectparubensantos.fragments.food.FoodFragment
+import rjas.projectparubensantos.fragments.home.HomeFragment
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    var fragment : Fragment? = null
 
     var idMainMenu = R.menu.main
         get() = field
@@ -61,7 +65,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_diet,
                 R.id.nav_progress,
                 R.id.nav_settings,
-                R.id.nav_food
+                R.id.nav_food,
+                R.id.nav_InsertModifyFood
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -74,16 +79,25 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-/*    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        //Open the settings Fragment.
-        if (item.itemId==R.id.nav_settings) {
-            supportFragmentManager.fragments.get(R.id.nav_settings);
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
 
-            Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show();*//*
+        val ProcessedOption : Boolean
 
+        if (fragment is FoodFragment) {
+            ProcessedOption = (fragment as FoodFragment).MenuOptions(item)
+        } else {
+            ProcessedOption = false
         }
-        return super.onOptionsItemSelected(item)
-    }*/
+
+        return if (ProcessedOption) {
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)

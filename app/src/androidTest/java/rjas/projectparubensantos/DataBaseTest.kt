@@ -11,6 +11,8 @@ import org.junit.runner.RunWith
 import rjas.projectparubensantos.bd.BDappOpenHelper
 import rjas.projectparubensantos.food.Food
 import rjas.projectparubensantos.food.FoodTableBD
+import rjas.projectparubensantos.food.FoodTypeTableBD
+import rjas.projectparubensantos.food.Type
 import rjas.projectparubensantos.progress.Progress
 import rjas.projectparubensantos.progress.ProgressTableBD
 import rjas.projectparubensantos.user.User
@@ -43,10 +45,14 @@ class DataBaseTest {
         progress.id = ProgressTableBD(db).insert(progress.toContentValues())
         assertNotEquals(0, progress.id)
     }
+    private fun insertFoodType(db: SQLiteDatabase, foodType: Type) {
+        foodType.id = FoodTypeTableBD(db).insert(foodType.toContentValues())
+        assertNotEquals(-1, foodType.id)
+    }
 
     @Before
     fun deleteDataBase() {
-        appContext().deleteDatabase(BDappOpenHelper.NAME)
+        //appContext().deleteDatabase(BDappOpenHelper.NAME)
     }
 
     @Test
@@ -58,32 +64,40 @@ class DataBaseTest {
 
         db.close()
     }
+        @Test
+        fun canInsertUser() {
+            val db = getWritableDatabase()
 
+            val user = User("Ruben", 72.0,164,1.2,"Bulk")
+            insertUser(db, user)
+
+            db.close()
+        }
+
+        @Test
+        fun canInsertFood() {
+            val db = getWritableDatabase()
+
+            val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+            insertFood(db, food)
+
+            db.close()
+        }
+        @Test
+        fun canInsertProgress() {
+            val db = getWritableDatabase()
+
+            val progress = Progress(72.0,71.8,"Cut")
+            insertProgress(db, progress)
+
+            db.close()
+        }
     @Test
-    fun canInsertUser() {
+    fun canInsertFoodType() {
         val db = getWritableDatabase()
 
-        val user = User("Ruben", 72.0,164,1.2,"Bulk")
-        insertUser(db, user)
-
-        db.close()
-    }
-
-    @Test
-    fun canInsertFood() {
-        val db = getWritableDatabase()
-
-        val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
-        insertFood(db, food)
-
-        db.close()
-    }
-    @Test
-    fun canInsertProgress() {
-        val db = getWritableDatabase()
-
-        val progress = Progress(72.0,71.8,"Cut")
-        insertProgress(db, progress)
+        val foodType = Type("Protein")
+        insertFoodType(db, foodType)
 
         db.close()
     }
