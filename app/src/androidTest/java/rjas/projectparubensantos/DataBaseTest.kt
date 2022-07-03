@@ -45,14 +45,14 @@ class DataBaseTest {
         progress.id = ProgressTableBD(db).insert(progress.toContentValues())
         assertNotEquals(0, progress.id)
     }
-    private fun insertFoodType(db: SQLiteDatabase, foodType: Type) {
-        foodType.id = FoodTypeTableBD(db).insert(foodType.toContentValues())
-        assertNotEquals(-1, foodType.id)
+    private fun insertFoodType(db: SQLiteDatabase, type: Type) {
+        type.id = FoodTypeTableBD(db).insert(type.toContentValues())
+        assertNotEquals(-1, type.id)
     }
 
     @Before
     fun deleteDataBase() {
-        //appContext().deleteDatabase(BDappOpenHelper.NAME)
+        appContext().deleteDatabase(BDappOpenHelper.NAME)
     }
 
     @Test
@@ -78,7 +78,10 @@ class DataBaseTest {
         fun canInsertFood() {
             val db = getWritableDatabase()
 
-            val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+            val foodTypeId = Type("Carbohydrate")
+            insertFoodType(db, foodTypeId)
+
+            val food = Food("Rice", foodTypeId.id, 348, 6.9, 1.0, 77.8)
             insertFood(db, food)
 
             db.close()
@@ -96,8 +99,8 @@ class DataBaseTest {
     fun canInsertFoodType() {
         val db = getWritableDatabase()
 
-        val foodType = Type("Protein")
-        insertFoodType(db, foodType)
+        val foodTypeId = Type("Carbohydrate")
+        insertFoodType(db, foodTypeId)
 
         db.close()
     }
@@ -126,7 +129,10 @@ class DataBaseTest {
     fun canModifyFood() {
         val db = getWritableDatabase()
 
-        val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+        val foodTypeId = Type("Carbohydrate")
+        insertFoodType(db, foodTypeId)
+
+        val food = Food("Rice", foodTypeId.id, 348, 6.9, 1.0, 77.8)
         insertFood(db, food)
 
         food.kcal = 351
@@ -180,7 +186,10 @@ class DataBaseTest {
     fun canDeleteFood() {
         val db = getWritableDatabase()
 
-        val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+        val foodTypeId = Type("Carbohydrate")
+        insertFoodType(db, foodTypeId)
+
+        val food = Food("Rice", foodTypeId.id, 348, 6.9, 1.0, 77.8)
         insertFood(db, food)
 
         val foodDeleted = FoodTableBD(db).delete(
@@ -237,12 +246,15 @@ class DataBaseTest {
     fun canReadFoods() {
         val db = getWritableDatabase()
 
-        val food = Food("Rice", "carbohydrate", 348, 6.9, 1.0, 77.8)
+        val foodTypeId = Type("Carbohydrate")
+        insertFoodType(db, foodTypeId)
+
+        val food = Food("Rice", foodTypeId.id, 348, 6.9, 1.0, 77.8)
         insertFood(db, food)
 
         val cursor = FoodTableBD(db).query(
             FoodTableBD.ALL_COLUMNS,
-            "${BaseColumns._ID}=?",
+            "${FoodTableBD.ID_VALUE}=?",
             arrayOf("${food.id}"),
             null,
             null,
@@ -258,7 +270,32 @@ class DataBaseTest {
 
         db.close()
     }
-   /* @Test
+/*
+    @Test
+    fun canReadFoodType() {
+        val db = getWritableDatabase()
+
+        val foodTypeId = Type("Carbohydrate")
+        insertFoodType(db, foodTypeId)
+
+        val cursor = FoodTypeTableBD(db).query(
+            FoodTypeTableBD.ALL_COLUMNS,
+            "${FoodTypeTableBD.FOOD_TYPE}=?",
+            arrayOf("${foodTypeId.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val foodTypeIdBD = Type.fromCursor(cursor)
+        assertEquals(foodTypeId, foodTypeIdBD)
+
+        db.close()
+    }
+    @Test
     fun canReadProgress() {
         val db = getWritableDatabase()
 

@@ -137,8 +137,8 @@ class ContentProvider : ContentProvider() {
             URI_SPECIFIC_FOOD -> FoodTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
             URI_PROGRESS -> ProgressTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
             URI_SPECIFIC_PROGRESS -> ProgressTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
-            URI_FOODTYPE -> FoodTypeTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
-            URI_SPECIFIC_FOODTYPE -> FoodTypeTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_FOOD_TYPE -> FoodTypeTableBD(db).query(columns, selection, argsSelection, null, null, sortOrder)
+            URI_SPECIFIC_FOOD_TYPE -> FoodTypeTableBD(db).query(columns, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
             else -> null
         }
 
@@ -172,8 +172,8 @@ class ContentProvider : ContentProvider() {
             URI_SPECIFIC_FOOD -> "$MULTIPLE_REGISTER/${FoodTableBD.NAME}"
             URI_PROGRESS -> "$UNIQUE_REGISTER/${ProgressTableBD.NAME}"
             URI_SPECIFIC_PROGRESS -> "$MULTIPLE_REGISTER/${ProgressTableBD.NAME}"
-            URI_FOODTYPE -> "$UNIQUE_REGISTER/${FoodTypeTableBD.NAME}"
-            URI_SPECIFIC_FOODTYPE -> "$MULTIPLE_REGISTER/${FoodTypeTableBD.NAME}"
+            URI_FOOD_TYPE -> "$UNIQUE_REGISTER/${FoodTypeTableBD.NAME}"
+            URI_SPECIFIC_FOOD_TYPE -> "$MULTIPLE_REGISTER/${FoodTypeTableBD.NAME}"
             else -> null
         }
 
@@ -198,7 +198,7 @@ class ContentProvider : ContentProvider() {
             URI_USERS -> UserTableBD(db).insert(values)
             URI_FOODS -> FoodTableBD(db).insert(values)
             URI_PROGRESS -> ProgressTableBD(db).insert(values)
-            URI_FOODTYPE -> FoodTypeTableBD(db).insert(values)
+            URI_FOOD_TYPE -> FoodTypeTableBD(db).insert(values)
             else -> -1
         }
 
@@ -241,7 +241,7 @@ class ContentProvider : ContentProvider() {
             URI_SPECIFIC_USER -> UserTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
             URI_SPECIFIC_FOOD -> FoodTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
             URI_SPECIFIC_PROGRESS -> ProgressTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
-            URI_SPECIFIC_FOODTYPE -> FoodTypeTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_SPECIFIC_FOOD_TYPE -> FoodTypeTableBD(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
 
             else -> 0
         }
@@ -282,7 +282,7 @@ class ContentProvider : ContentProvider() {
             URI_SPECIFIC_USER -> UserTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
             URI_SPECIFIC_FOOD -> FoodTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
             URI_SPECIFIC_PROGRESS -> ProgressTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
-            URI_SPECIFIC_FOODTYPE -> FoodTypeTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_SPECIFIC_FOOD_TYPE -> FoodTypeTableBD(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
 
             else -> 0
         }
@@ -301,8 +301,8 @@ class ContentProvider : ContentProvider() {
         private const val URI_SPECIFIC_FOOD = 201
         private const val URI_PROGRESS = 300
         private const val URI_SPECIFIC_PROGRESS = 301
-        private const val URI_FOODTYPE = 400
-        private const val URI_SPECIFIC_FOODTYPE = 401
+        private const val URI_FOOD_TYPE = 400
+        private const val URI_SPECIFIC_FOOD_TYPE = 401
 
         private const val UNIQUE_REGISTER = "vnd.android.cursor.item"
         private const val MULTIPLE_REGISTER = "vnd.android.cursor.dir"
@@ -323,8 +323,8 @@ class ContentProvider : ContentProvider() {
             uriMatcher.addURI(AUTHORITY, "${FoodTableBD.NAME}/#", URI_SPECIFIC_FOOD)
             uriMatcher.addURI(AUTHORITY, ProgressTableBD.NAME, URI_PROGRESS)
             uriMatcher.addURI(AUTHORITY, "${ProgressTableBD.NAME}/#", URI_SPECIFIC_PROGRESS)
-            uriMatcher.addURI(AUTHORITY, FoodTypeTableBD.NAME, URI_FOODTYPE)
-            uriMatcher.addURI(AUTHORITY, "${FoodTypeTableBD.NAME}/#", URI_SPECIFIC_FOODTYPE)
+            uriMatcher.addURI(AUTHORITY, FoodTypeTableBD.NAME, URI_FOOD_TYPE)
+            uriMatcher.addURI(AUTHORITY, "${FoodTypeTableBD.NAME}/#", URI_SPECIFIC_FOOD_TYPE)
 
             return uriMatcher
         }

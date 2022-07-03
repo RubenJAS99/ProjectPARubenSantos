@@ -5,13 +5,13 @@ import android.database.Cursor
 import android.provider.BaseColumns
 
 data class Type(
-    var name : String,
+    var foodType : String,
     var id: Long = -1
 ) {
     fun toContentValues(): ContentValues {
         val values = ContentValues()
 
-        values.put(FoodTypeTableBD.FOOD_TYPE, name)
+        values.put(FoodTypeTableBD.FOOD_TYPE, foodType)
 
         return values
     }
@@ -22,9 +22,9 @@ data class Type(
             val posFoodType = cursor.getColumnIndex(FoodTypeTableBD.FOOD_TYPE)
 
             val id = cursor.getLong(posId)
-            val name = cursor.getString(posFoodType)
+            val foodType = cursor.getString(posFoodType)
 
-            return Type(name, id)
+            return Type(foodType, id)
         }
     }
 }

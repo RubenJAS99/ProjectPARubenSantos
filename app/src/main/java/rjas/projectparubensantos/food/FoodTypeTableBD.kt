@@ -11,9 +11,11 @@ class FoodTypeTableBD(db: SQLiteDatabase) : BDTable(db, NAME) {
     }
 
     companion object {
-        const val NAME = "foodtype"
-        const val FOOD_TYPE = "name"
+        const val NAME = "foodType"
 
-        val ALL_COLUMNS = arrayOf(BaseColumns._ID, FOOD_TYPE)
+        const val FOOD_TYPE_ID = "$NAME.${BaseColumns._ID}"
+        const val FOOD_TYPE = "TypeName"
+
+        val ALL_COLUMNS = arrayOf(FOOD_TYPE_ID, FOOD_TYPE)
     }
 }

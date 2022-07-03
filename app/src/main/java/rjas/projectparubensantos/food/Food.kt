@@ -5,8 +5,8 @@ import android.database.Cursor
 import android.provider.BaseColumns
 
 data class Food(
-    var name : String,
-    var type: String,
+    var foodName : String,
+    var foodTypeId: Long,
     var kcal: Int,
     var protein: Double,
     var fat: Double,
@@ -16,8 +16,8 @@ data class Food(
     fun toContentValues(): ContentValues {
         val values = ContentValues()
 
-        values.put(FoodTableBD.FOOD_NAME, name)
-        values.put(FoodTableBD.FOOD_TYPE, type)
+        values.put(FoodTableBD.FOOD_NAME, foodName)
+        values.put(FoodTableBD.FOOD_TYPE_ID, foodTypeId)
         values.put(FoodTableBD.FOOD_KCAL, kcal)
         values.put(FoodTableBD.FOOD_PROTEIN, protein)
         values.put(FoodTableBD.FOOD_FAT, fat)
@@ -30,7 +30,7 @@ data class Food(
         fun fromCursor(cursor: Cursor): Food {
             val posId = cursor.getColumnIndex(BaseColumns._ID)
             val posFoodName = cursor.getColumnIndex(FoodTableBD.FOOD_NAME)
-            val posFoodType = cursor.getColumnIndex(FoodTableBD.FOOD_TYPE)
+            val posFoodType = cursor.getColumnIndex(FoodTableBD.FOOD_TYPE_ID)
             val posFoodKcal = cursor.getColumnIndex(FoodTableBD.FOOD_KCAL)
             val posFoodProtein = cursor.getColumnIndex(FoodTableBD.FOOD_PROTEIN)
             val posFoodFat = cursor.getColumnIndex(FoodTableBD.FOOD_FAT)
@@ -38,14 +38,14 @@ data class Food(
 
 
             val id = cursor.getLong(posId)
-            val name = cursor.getString(posFoodName)
-            val type= cursor.getString(posFoodType)
+            val foodName = cursor.getString(posFoodName)
+            val foodTypeId= cursor.getLong(posFoodType)
             val kcal = cursor.getInt(posFoodKcal)
             val protein = cursor.getDouble(posFoodProtein)
             val fat = cursor.getDouble(posFoodFat)
             val carbohydrate = cursor.getDouble(posFoodHC)
 
-            return Food(name, type, kcal, protein, fat, carbohydrate, id)
+            return Food(foodName, foodTypeId, kcal, protein, fat, carbohydrate, id)
         }
     }
 }

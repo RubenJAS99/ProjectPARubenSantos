@@ -111,7 +111,6 @@
         android:layout_width="210dp"
         android:layout_height="40dp"
         android:layout_marginStart="32dp"
-        android:hint="@string/FoodType2"
         app:layout_constraintBottom_toBottomOf="@+id/textViewFoodType"
         app:layout_constraintStart_toEndOf="@+id/textViewFoodType"
         app:layout_constraintTop_toTopOf="@+id/textViewFoodType"
