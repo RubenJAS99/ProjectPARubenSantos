@@ -15,7 +15,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import rjas.projectparubensantos.databinding.ActivityMainBinding
+import rjas.projectparubensantos.fragments.diet.DietFragment
 import rjas.projectparubensantos.fragments.food.FoodFragment
+import rjas.projectparubensantos.fragments.home.HomeFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -81,6 +83,32 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+
+/*        val opcaoProcessada : Boolean
+
+        if (fragment is HomeFragment) {
+            opcaoProcessada = (fragment as HomeFragment).MenuOptions(item)
+        } else if (fragment is DietFragment) {
+            opcaoProcessada = (fragment as DietFragment).MenuOptions(item)
+        } else if (fragment is FoodFragment) {
+            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
+        } else if (fragment is FoodFragment) {
+            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
+        } else if (fragment is FoodFragment) {
+            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
+        } else if (fragment is FoodFragment) {
+            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
+        } else if (fragment is FoodFragment) {
+            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
+        } else {
+            opcaoProcessada = false
+        }
+
+        return if (opcaoProcessada) {
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }*/
     }
 
 /*        val ProcessedOption : Boolean

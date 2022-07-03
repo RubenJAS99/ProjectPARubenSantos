@@ -95,7 +95,7 @@
         <!--Right Components-->
 
         <EditText
-            android:id="@+id/editTextNumberDecimalFoodName"
+            android:id="@+id/editTextFoodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"

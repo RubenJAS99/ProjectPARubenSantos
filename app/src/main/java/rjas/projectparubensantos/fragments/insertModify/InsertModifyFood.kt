@@ -20,8 +20,10 @@ import rjas.projectparubensantos.databinding.FragmentInsertModifyFoodBinding
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
+import rjas.projectparubensantos.food.Food
 import rjas.projectparubensantos.food.FoodTableBD
 import rjas.projectparubensantos.food.FoodTypeTableBD
+import rjas.projectparubensantos.food.Type
 
 class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentInsertModifyFoodBinding? = null
@@ -46,14 +48,12 @@ class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD_TYPE, null, this)
-
         val activity = requireActivity() as MainActivity
         activity.fragment = this
         activity.idMainMenu = R.menu.food_menu
     }
 
-/*    fun processaOpcaoMenu(item: MenuItem): Boolean {
+    fun MenuOptions(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_save -> {
                 save()
@@ -65,52 +65,72 @@ class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             }
             else -> false
         }
-    }*/
+    }
 
     private fun goToFood() {
         findNavController().navigate(R.id.action_fragment_insert_modify_food_to_fragment_food)
     }
 
-    /*private fun save() {
-        val titulo = binding.editTextTitulo.text.toString()
-        if (titulo.isBlank()) {
-            binding.editTextTitulo.error = getString(R.string.titulo_obrigatorio)
-            binding.editTextTitulo.requestFocus()
+    private fun save() {
+        val foodName = binding.editTextFoodName.text.toString()
+        if (foodName.isBlank()) {
+            binding.editTextFoodName.error = getString(R.string.food_mandatory)
+            binding.editTextFoodName.requestFocus()
             return
         }
 
-        val autor = binding.editTextAutor.text.toString()
-        if (autor.isBlank()) {
-            binding.editTextAutor.error = getString(R.string.autor_obrigatorio)
-            binding.editTextAutor.requestFocus()
+        val foodType = binding.spinnerFoodType.selectedItemId
+        if (foodType == Spinner.INVALID_ROW_ID) {
+            //binding.textViewCategoria.error = getString(R.string.categoria_obrigatoria)
+            binding.spinnerFoodType.requestFocus()
+            return
+        }
+        val kcal = binding.editTextNumberFoodKcal.text.toString().toInt()
+        if (kcal.equals(null)) {
+            binding.editTextNumberFoodKcal.error = getString(R.string.food_kcal_mandatory)
+            binding.editTextNumberFoodKcal.requestFocus()
+            return
+        }
+        val protein = binding.editTextNumberFoodProtein.text.toString().toDouble()
+        if (protein.equals(null)) {
+            binding.editTextNumberFoodProtein.error = getString(R.string.food_protein_mandatory)
+            binding.editTextNumberFoodProtein.requestFocus()
+            return
+        }
+        val fat = binding.editTextNumberFoodFat.text.toString().toDouble()
+        if (fat.equals(null)) {
+            binding.editTextNumberFoodFat.error = getString(R.string.food_fat_mandatory)
+            binding.editTextNumberFoodFat.requestFocus()
+            return
+        }
+        val carbohydrate = binding.editTextNumberFoodCarbohydrate.text.toString().toDouble()
+        if (carbohydrate.equals(null)) {
+            binding.editTextNumberFoodCarbohydrate.error = getString(R.string.food_carbohydrate_mandatory)
+            binding.editTextNumberFoodCarbohydrate.requestFocus()
             return
         }
 
-        val idCategoria = binding.spinnerCategorias.selectedItemId
-        if (idCategoria == Spinner.INVALID_ROW_ID) {
-            binding.textViewCategoria.error = getString(R.string.categoria_obrigatoria)
-            binding.spinnerCategorias.requestFocus()
-            return
-        }
-
-        val livro = Livro(
-            titulo,
-            autor,
-            Categoria("", idCategoria) // O nome da categoria não interessa porque o que é guardado é a chave estrangeira
+        val food = Food(
+            foodName,
+            Type("",foodType),
+            kcal,
+            protein,
+            fat,
+            carbohydrate
         )
 
-        val endereco = requireActivity().contentResolver.insert(
-            ContentProviderLivros.ENDERECO_LIVROS,
-            livro.toContentValues()
+        val address = requireActivity().contentResolver.insert(
+            ContentProvider.FOOD_ADDRESS,
+            food.toContentValues()
         )
 
-        if (endereco != null) {
-            Toast.makeText(requireContext(), R.string.livro_inserido_sucesso, Toast.LENGTH_LONG).show()
-            voltaListaLivros()
+        if (address != null) {
+            Toast.makeText(requireContext(), R.string.success_insert_food, Toast.LENGTH_LONG).show()
+            goToFood()
         } else {
-            Snackbar.make(binding.editTextTitulo, R.string.erro_inserir_livro, Snackbar.LENGTH_INDEFINITE).show()
+            Snackbar.make(binding.editTextFoodName, R.string.error_insert_food, Snackbar.LENGTH_INDEFINITE).show()
         }
-    }*/
+    }
 
     companion object {
         const val ID_LOADER_FOOD_TYPE = 0
@@ -130,7 +150,7 @@ class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         CursorLoader(
             requireContext(),
             ContentProvider.FOODTYPE_ADDRESS,
-            FoodTableBD.ALL_COLUMNS,
+            FoodTypeTableBD.ALL_COLUMNS,
             null,
             null,
             FoodTypeTableBD.FOOD_TYPE

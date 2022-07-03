@@ -18,6 +18,21 @@
     <string name="modify">Modify</string>
     <string name="delete">Delete</string>
 
+
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="food_mandatory">Write the name of the food</string>
+    <string name="food_type_mandatory">Select the food type</string>
+    <string name="food_kcal_mandatory">Write the kcal of the food</string>
+    <string name="food_protein_mandatory">Write the protein of the food</string>
+    <string name="food_fat_mandatory">Write the fat of the food</string>
+    <string name="food_carbohydrate_mandatory">Write the carbohydrate of the food</string>
+
+    <string name="success_insert_food">Food inserted successfully.</string>
+    <string name="error_insert_food">Error inserting food.</string>
+    <string name="erro_guardar_livro">Erro ao guardar livro.</string>
+
     <string name="InsertModifyFood">Insert or Modify</string>
 
     <string name="Weight">Weight:</string>
