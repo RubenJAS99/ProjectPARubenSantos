@@ -40,6 +40,6 @@ class FoodTableBD(db: SQLiteDatabase) : BDTable(db, NAME) {
         const val FOOD_HC = "carbohydrate"
         const val FOOD_TYPE_ID = "foodTypeId"
 
-        val ALL_COLUMNS = arrayOf(ID_VALUE, FOOD_NAME, FOOD_KCAL, FOOD_PROTEIN, FOOD_FAT, FOOD_HC, FOOD_TYPE_ID)
+        val ALL_COLUMNS = arrayOf(ID_VALUE, FOOD_NAME, FOOD_KCAL, FOOD_PROTEIN, FOOD_FAT, FOOD_HC, FOOD_TYPE_ID, FoodTypeTableBD.FOOD_TYPE)
     }
 }

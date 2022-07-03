@@ -52,7 +52,7 @@ class DataBaseTest {
 
     @Before
     fun deleteDataBase() {
-        appContext().deleteDatabase(BDappOpenHelper.NAME)
+        //appContext().deleteDatabase(BDappOpenHelper.NAME)
     }
 
     @Test
@@ -81,7 +81,7 @@ class DataBaseTest {
             val foodTypeId = Type("Carbohydrate")
             insertFoodType(db, foodTypeId)
 
-            val food = Food("Rice", foodTypeId.id, 348, 6.9, 1.0, 77.8)
+            val food = Food("Rice", foodTypeId, 348, 6.9, 1.0, 77.8)
             insertFood(db, food)
 
             db.close()
@@ -132,7 +132,7 @@ class DataBaseTest {
         val foodTypeId = Type("Carbohydrate")
         insertFoodType(db, foodTypeId)
 
-        val food = Food("Rice", foodTypeId.id, 348, 6.9, 1.0, 77.8)
+        val food = Food("Rice", foodTypeId, 348, 6.9, 1.0, 77.8)
         insertFood(db, food)
 
         food.kcal = 351
@@ -189,7 +189,7 @@ class DataBaseTest {
         val foodTypeId = Type("Carbohydrate")
         insertFoodType(db, foodTypeId)
 
-        val food = Food("Rice", foodTypeId.id, 348, 6.9, 1.0, 77.8)
+        val food = Food("Rice", foodTypeId, 348, 6.9, 1.0, 77.8)
         insertFood(db, food)
 
         val foodDeleted = FoodTableBD(db).delete(
@@ -249,7 +249,7 @@ class DataBaseTest {
         val foodTypeId = Type("Carbohydrate")
         insertFoodType(db, foodTypeId)
 
-        val food = Food("Rice", foodTypeId.id, 348, 6.9, 1.0, 77.8)
+        val food = Food("Rice", foodTypeId, 348, 6.9, 1.0, 77.8)
         insertFood(db, food)
 
         val cursor = FoodTableBD(db).query(

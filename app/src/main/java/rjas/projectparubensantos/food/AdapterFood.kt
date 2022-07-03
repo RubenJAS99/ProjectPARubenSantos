@@ -31,7 +31,7 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
                 field = value
 
                 textViewName.text = food?.foodName ?: ""
-                textViewType.text = "${food?.foodTypeId}"
+                textViewType.text = food?.foodTypeId?.foodType ?: ""
                 textViewKcal.text = (food?.kcal ?: "").toString()
                 textViewProtein.text = (food?.protein ?: "").toString()
                 textViewFat.text = (food?.fat ?: "").toString()

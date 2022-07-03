@@ -9,14 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleAdapter
 import android.widget.SimpleCursorAdapter
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import rjas.projectparubensantos.databinding.FragmentInsertModifyFoodBinding
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
+import rjas.projectparubensantos.food.FoodTableBD
 import rjas.projectparubensantos.food.FoodTypeTableBD
 
 class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -42,26 +46,74 @@ class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD, null, this)
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD_TYPE, null, this)
 
-        val activity = activity as MainActivity
+        val activity = requireActivity() as MainActivity
         activity.fragment = this
-        //activity.idMainMenu = R.menu.menu_edicao
+        activity.idMainMenu = R.menu.food_menu
     }
 
-/*    fun MenuOptions(item: MenuItem): Boolean {
+/*    fun processaOpcaoMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_guardar -> true
-            R.id.action_cancelar -> {
-                findNavController().navigate(R.id.action_InserirLivroFragment_to_ListaLivrosFragment)
+            R.id.action_save -> {
+                save()
+                true
+            }
+            R.id.action_cancel -> {
+                goToFood()
                 true
             }
             else -> false
         }
     }*/
 
+    private fun goToFood() {
+        findNavController().navigate(R.id.action_fragment_insert_modify_food_to_fragment_food)
+    }
+
+    /*private fun save() {
+        val titulo = binding.editTextTitulo.text.toString()
+        if (titulo.isBlank()) {
+            binding.editTextTitulo.error = getString(R.string.titulo_obrigatorio)
+            binding.editTextTitulo.requestFocus()
+            return
+        }
+
+        val autor = binding.editTextAutor.text.toString()
+        if (autor.isBlank()) {
+            binding.editTextAutor.error = getString(R.string.autor_obrigatorio)
+            binding.editTextAutor.requestFocus()
+            return
+        }
+
+        val idCategoria = binding.spinnerCategorias.selectedItemId
+        if (idCategoria == Spinner.INVALID_ROW_ID) {
+            binding.textViewCategoria.error = getString(R.string.categoria_obrigatoria)
+            binding.spinnerCategorias.requestFocus()
+            return
+        }
+
+        val livro = Livro(
+            titulo,
+            autor,
+            Categoria("", idCategoria) // O nome da categoria não interessa porque o que é guardado é a chave estrangeira
+        )
+
+        val endereco = requireActivity().contentResolver.insert(
+            ContentProviderLivros.ENDERECO_LIVROS,
+            livro.toContentValues()
+        )
+
+        if (endereco != null) {
+            Toast.makeText(requireContext(), R.string.livro_inserido_sucesso, Toast.LENGTH_LONG).show()
+            voltaListaLivros()
+        } else {
+            Snackbar.make(binding.editTextTitulo, R.string.erro_inserir_livro, Snackbar.LENGTH_INDEFINITE).show()
+        }
+    }*/
+
     companion object {
-        const val ID_LOADER_FOOD = 0
+        const val ID_LOADER_FOOD_TYPE = 0
     }
 
     /**
@@ -78,7 +130,7 @@ class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         CursorLoader(
             requireContext(),
             ContentProvider.FOODTYPE_ADDRESS,
-            FoodTypeTableBD.ALL_COLUMNS,
+            FoodTableBD.ALL_COLUMNS,
             null,
             null,
             FoodTypeTableBD.FOOD_TYPE
