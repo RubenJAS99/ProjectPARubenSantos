@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SimpleAdapter
 import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -17,6 +16,7 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import rjas.projectparubensantos.databinding.FragmentInsertModifyFoodBinding
+import rjas.projectparubensantos.databinding.FragmentFoodBinding
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
@@ -48,9 +48,11 @@ class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD_TYPE, null, this)
+
         val activity = requireActivity() as MainActivity
         activity.fragment = this
-        activity.idMainMenu = R.menu.food_menu
+        activity.idMainMenu = R.menu.editing_menu
     }
 
     fun MenuOptions(item: MenuItem): Boolean {

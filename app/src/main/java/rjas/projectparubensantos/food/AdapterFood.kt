@@ -17,13 +17,18 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
                 notifyDataSetChanged()
             }
         }
-    class ViewHolderFood(foodItem: View) : RecyclerView.ViewHolder(foodItem) {
+    class ViewHolderFood(foodItem: View) : RecyclerView.ViewHolder(foodItem), View.OnClickListener {
         val textViewName = foodItem.findViewById<TextView>(R.id.textViewName)
         val textViewType = foodItem.findViewById<TextView>(R.id.textViewType)
         val textViewKcal = foodItem.findViewById<TextView>(R.id.textViewKcal)
         val textViewProtein = foodItem.findViewById<TextView>(R.id.textViewProtein)
         val textViewFat = foodItem.findViewById<TextView>(R.id.textViewFat)
         val textViewCarbohydrate = foodItem.findViewById<TextView>(R.id.textViewCarbohydrate)
+
+        init {
+            foodItem.setOnClickListener(this)
+        }
+
 
         var food: Food? = null
             get() = field
@@ -37,6 +42,29 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
                 textViewFat.text = (food?.fat ?: "").toString()
                 textViewCarbohydrate.text = (food?.carbohydrate ?: "").toString()
             }
+
+        /**
+         * Called when a view has been clicked.
+         *
+         * @param v The view that was clicked.
+         */
+        override fun onClick(v: View?) {
+            selected?.unselect()
+            this.select()
+        }
+
+        private fun select() {
+            selected = this
+            itemView.setBackgroundResource(android.R.color.darker_gray)
+        }
+
+        private fun unselect() {
+            itemView.setBackgroundResource(android.R.color.white)
+        }
+
+        companion object {
+            var selected : ViewHolderFood? = null
+        }
     }
     /**
      * Called when RecyclerView needs a new [ViewHolder] of the given type to represent
