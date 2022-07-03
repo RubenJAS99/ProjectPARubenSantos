@@ -18,9 +18,19 @@ import rjas.projectparubensantos.AdapterFoods
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentFoodBinding
+import rjas.projectparubensantos.food.Food
 import rjas.projectparubensantos.food.FoodTypeTableBD
 
 class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+    var foodSelected: Food? = null
+        get() = field
+        set(value) {
+            if (value != field) {
+                field = value
+                (requireActivity() as MainActivity).updateMenuOptions(field != null)
+            }
+        }
+
 
     private var _binding: FragmentFoodBinding? = null
     private var adapterFoods : AdapterFoods? = null
@@ -47,7 +57,7 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewFood.adapter = adapterFoods
         binding.recyclerViewFood.layoutManager = LinearLayoutManager(requireContext())
 
-        val activity = activity as MainActivity
+        val activity = requireActivity() as MainActivity
         activity.fragment = this
         activity.idMainMenu = R.menu.food_menu
 

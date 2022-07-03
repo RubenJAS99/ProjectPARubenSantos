@@ -17,7 +17,7 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
                 notifyDataSetChanged()
             }
         }
-    class ViewHolderFood(foodItem: View) : RecyclerView.ViewHolder(foodItem), View.OnClickListener {
+    inner class ViewHolderFood(foodItem: View) : RecyclerView.ViewHolder(foodItem), View.OnClickListener {
         val textViewName = foodItem.findViewById<TextView>(R.id.textViewName)
         val textViewType = foodItem.findViewById<TextView>(R.id.textViewType)
         val textViewKcal = foodItem.findViewById<TextView>(R.id.textViewKcal)
@@ -50,6 +50,7 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
          */
         override fun onClick(v: View?) {
             selected?.unselect()
+            fragment.foodSelected = food
             this.select()
         }
 
@@ -60,10 +61,6 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
 
         private fun unselect() {
             itemView.setBackgroundResource(android.R.color.white)
-        }
-
-        companion object {
-            var selected : ViewHolderFood? = null
         }
     }
     /**
@@ -129,5 +126,10 @@ class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoo
         if (cursor == null) return 0
 
         return cursor!!.count
+    }
+
+
+    companion object {
+        var selected : ViewHolderFood? = null
     }
 }
