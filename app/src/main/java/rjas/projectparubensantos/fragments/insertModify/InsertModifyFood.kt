@@ -70,7 +70,7 @@ class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun goToFood() {
-        findNavController().navigate(R.id.action_fragment_insert_modify_food_to_fragment_food)
+        findNavController().navigate(R.id.action_nav_InsertModifyFood_to_nav_food)
     }
 
     private fun save() {
@@ -83,7 +83,6 @@ class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         val foodType = binding.spinnerFoodType.selectedItemId
         if (foodType == Spinner.INVALID_ROW_ID) {
-            //binding.textViewCategoria.error = getString(R.string.categoria_obrigatoria)
             binding.spinnerFoodType.requestFocus()
             return
         }

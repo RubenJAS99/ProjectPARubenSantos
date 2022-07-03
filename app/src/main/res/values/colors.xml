@@ -10,4 +10,5 @@
 
     <color name="lowExercise">#DC1E0B</color>
     <color name="highExercise">#35BA01</color>
+    <color name="delete_color">#FFCECE</color>
 </resources>

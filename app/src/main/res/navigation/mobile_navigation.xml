@@ -3,19 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
-// Fragments pages
+    app:startDestination="@id/nav_home">
+
+    <!--Fragments pages-->
     <fragment
         android:id="@+id/nav_home"
         android:name="rjas.projectparubensantos.fragments.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="rjas.projectparubensantos.fragments.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_profile"
@@ -51,9 +46,20 @@
         android:id="@+id/nav_InsertModifyFood"
         android:name="rjas.projectparubensantos.fragments.insertModify.InsertModifyFood"
         android:label="@string/InsertModifyFood"
-        tools:layout="@layout/fragment_insert_modify_food" >
+        tools:layout="@layout/fragment_insert_modify_food">
         <action
-            android:id="@+id/action_fragment_insert_modify_food_to_fragment_food"
+            android:id="@+id/action_nav_InsertModifyFood_to_nav_food"
+            app:destination="@id/nav_food" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_delete_food"
+        android:name="rjas.projectparubensantos.fragments.food.DeleteFood"
+        android:label="@string/delete_food_label"
+        tools:layout="@layout/fragment_delete_food">
+        <action
+            android:id="@+id/action_nav_delete_food_to_nav_food"
             app:destination="@id/nav_food" />
     </fragment>
 

@@ -8,7 +8,6 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_diet">Diet</string>
     <string name="menu_progress">Progress</string>
@@ -32,6 +31,9 @@
     <string name="success_insert_food">Food inserted successfully.</string>
     <string name="error_insert_food">Error inserting food.</string>
     <string name="erro_guardar_livro">Erro ao guardar livro.</string>
+
+    <string name="insert_food_label">New food</string>
+    <string name="delete_food_label">Delete food</string>
 
     <string name="InsertModifyFood">Insert or Modify</string>
 
