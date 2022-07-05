@@ -1,4 +1,4 @@
-package rjas.projectparubensantos.fragments.insertModify
+package rjas.projectparubensantos.food.insertModify
 
 import android.database.Cursor
 import android.os.Bundle
@@ -16,12 +16,10 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import rjas.projectparubensantos.databinding.FragmentInsertModifyFoodBinding
-import rjas.projectparubensantos.databinding.FragmentFoodBinding
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
 import rjas.projectparubensantos.food.Food
-import rjas.projectparubensantos.food.FoodTableBD
 import rjas.projectparubensantos.food.FoodTypeTableBD
 import rjas.projectparubensantos.food.Type
 

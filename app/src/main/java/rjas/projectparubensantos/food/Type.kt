@@ -3,11 +3,9 @@ package rjas.projectparubensantos.food
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 
-data class Type(
-    var foodType : String,
-    var id: Long = -1
-) {
+data class Type(var foodType: String = "", var id: Long = -1) : Serializable{
     fun toContentValues(): ContentValues {
         val values = ContentValues()
 

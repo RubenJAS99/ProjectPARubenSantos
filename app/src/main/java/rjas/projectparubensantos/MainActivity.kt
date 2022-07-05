@@ -15,10 +15,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import rjas.projectparubensantos.databinding.ActivityMainBinding
-import rjas.projectparubensantos.fragments.diet.DietFragment
 import rjas.projectparubensantos.fragments.food.FoodFragment
-import rjas.projectparubensantos.fragments.home.HomeFragment
-import rjas.projectparubensantos.fragments.insertModify.InsertModifyFood
+import rjas.projectparubensantos.food.insertModify.InsertModifyFood
 
 
 class MainActivity : AppCompatActivity() {
