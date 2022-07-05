@@ -10,31 +10,36 @@
         android:id="@+id/nav_home"
         android:name="rjas.projectparubensantos.fragments.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+    </fragment>
 
     <fragment
         android:id="@+id/nav_profile"
         android:name="rjas.projectparubensantos.fragments.profile.ProfileFragment"
         android:label="@string/menu_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+    </fragment>
 
     <fragment
         android:id="@+id/nav_diet"
         android:name="rjas.projectparubensantos.fragments.diet.DietFragment"
         android:label="@string/menu_diet"
-        tools:layout="@layout/fragment_diet" />
+        tools:layout="@layout/fragment_diet" >
+    </fragment>
 
     <fragment
         android:id="@+id/nav_progress"
         android:name="rjas.projectparubensantos.fragments.progress.ProgressFragment"
         android:label="@string/menu_progress"
-        tools:layout="@layout/fragment_progress" />
+        tools:layout="@layout/fragment_progress" >
+    </fragment>
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="rjas.projectparubensantos.fragments.settings.SettingsFragment"
         android:label="@string/action_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+    </fragment>
 
     <fragment
         android:id="@+id/nav_food"
@@ -51,14 +56,13 @@
 
     <fragment
         android:id="@+id/nav_InsertModifyFood"
-        android:name="rjas.projectparubensantos.food.insertModify.InsertModifyFood"
+        android:name="rjas.projectparubensantos.food.InsertModifyFood"
         android:label="@string/InsertModifyFood"
         tools:layout="@layout/fragment_insert_modify_food">
         <action
             android:id="@+id/action_nav_InsertModifyFood_to_nav_food"
             app:destination="@id/nav_food" />
     </fragment>
-
 
     <fragment
         android:id="@+id/nav_delete_food"
@@ -68,7 +72,9 @@
         <action
             android:id="@+id/action_nav_delete_food_to_nav_food"
             app:destination="@id/nav_food" />
+        <argument
+            android:name="food"
+            app:argType="rjas.projectparubensantos.food.Food" />
     </fragment>
-
 
 </navigation>

@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import rjas.projectparubensantos.databinding.ActivityMainBinding
 import rjas.projectparubensantos.fragments.food.FoodFragment
-import rjas.projectparubensantos.food.insertModify.InsertModifyFood
+import rjas.projectparubensantos.food.InsertModifyFood
 
 
 class MainActivity : AppCompatActivity() {
