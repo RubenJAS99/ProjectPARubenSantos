@@ -18,6 +18,7 @@ import rjas.projectparubensantos.databinding.ActivityMainBinding
 import rjas.projectparubensantos.fragments.diet.DietFragment
 import rjas.projectparubensantos.fragments.food.FoodFragment
 import rjas.projectparubensantos.fragments.home.HomeFragment
+import rjas.projectparubensantos.fragments.insertModify.InsertModifyFood
 
 
 class MainActivity : AppCompatActivity() {
@@ -80,52 +81,22 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            //R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
 
-/*        val opcaoProcessada : Boolean
-
-        if (fragment is HomeFragment) {
-            opcaoProcessada = (fragment as HomeFragment).MenuOptions(item)
-        } else if (fragment is DietFragment) {
-            opcaoProcessada = (fragment as DietFragment).MenuOptions(item)
-        } else if (fragment is FoodFragment) {
-            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
-        } else if (fragment is FoodFragment) {
-            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
-        } else if (fragment is FoodFragment) {
-            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
-        } else if (fragment is FoodFragment) {
-            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
-        } else if (fragment is FoodFragment) {
-            opcaoProcessada = (fragment as FoodFragment).MenuOptions(item)
-        } else {
-            opcaoProcessada = false
-        }
-
-        return if (opcaoProcessada) {
-            true
-        } else {
-            super.onOptionsItemSelected(item)
-        }*/
-    }
-
-/*        val ProcessedOption : Boolean
+        val processedOption : Boolean
 
         if (fragment is FoodFragment) {
-            ProcessedOption = (fragment as FoodFragment).MenuOptions(item)
+            processedOption = (fragment as FoodFragment).MenuOptions(item)
+        } else if (fragment is InsertModifyFood) {
+            processedOption = (fragment as InsertModifyFood).MenuOptions(item)
         } else {
-            ProcessedOption = false
+            processedOption = false
         }
 
-        return if (ProcessedOption) {
-            true
-        } else {
-            super.onOptionsItemSelected(item)
-        }
-    }*/
+
+        if (processedOption) return true
+
+        return super.onOptionsItemSelected(item)
+    }
 
         override fun onSupportNavigateUp(): Boolean {
             val navController = findNavController(R.id.nav_host_fragment_content_main)

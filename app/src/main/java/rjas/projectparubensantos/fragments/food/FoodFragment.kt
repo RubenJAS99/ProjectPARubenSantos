@@ -68,8 +68,8 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     fun MenuOptions(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_insert -> {
-               findNavController().navigate(R.id.action_nav_InsertModifyFood_to_nav_food)
-                return true
+                findNavController().navigate(R.id.action_nav_food_to_nav_InsertModifyFood)
+                true
             }
             R.id.action_modify -> true
             R.id.action_delete -> true

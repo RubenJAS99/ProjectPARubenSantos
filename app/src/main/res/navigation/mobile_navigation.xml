@@ -40,7 +40,14 @@
         android:id="@+id/nav_food"
         android:name="rjas.projectparubensantos.fragments.food.FoodFragment"
         android:label="@string/menu_food"
-        tools:layout="@layout/fragment_food" />
+        tools:layout="@layout/fragment_food" >
+        <action
+            android:id="@+id/action_nav_food_to_nav_InsertModifyFood"
+            app:destination="@id/nav_InsertModifyFood" />
+        <action
+            android:id="@+id/action_nav_food_to_nav_delete_food"
+            app:destination="@id/nav_delete_food" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_InsertModifyFood"
