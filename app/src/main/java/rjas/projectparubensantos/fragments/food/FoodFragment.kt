@@ -25,10 +25,8 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     var foodSelected: Food? = null
         get() = field
         set(value) {
-            if (value != field) {
                 field = value
                 (requireActivity() as MainActivity).updateMenuOptions(field != null)
-            }
         }
 
 
