@@ -13,78 +13,204 @@
         android:layout_margin="16dp"
         android:background="@color/white"
         android:orientation="vertical">
-
+<!--Right Text Views-->
         <TextView
-            android:id="@+id/textViewName"
+            android:id="@+id/textViewFoodNameDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="97dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp"
+            tools:text="Chicken" />
+
+        <TextView
+            android:id="@+id/textViewFoodTypeDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            tools:text="Protein"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/textViewFoodKcalDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp"
+            tools:text="108" />
+        <TextView
+            android:id="@+id/textViewFoodProteinDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp"
+            tools:text="24.1" />
+        <TextView
+            android:id="@+id/textViewFoodFatDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp"
+            tools:text="1.2" />
+        <TextView
+            android:id="@+id/textViewCarbohydrateDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp"
+            tools:text="0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <!--Left Text Views-->
+
+        <TextView
+            android:id="@+id/textViewFood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/Food"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/FoodName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Chicken breast"
-            />
-<!--        <TextView
-            android:id="@+id/textViewType"
-            android:layout_marginStart="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="@+id/textViewName"
-            app:layout_constraintStart_toStartOf="@+id/textViewName"
-            app:layout_constraintTop_toBottomOf="@+id/textViewName"
-            tools:text="Type: Protein" />
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFood" />
+
         <TextView
-            android:id="@+id/textViewKcal"
-            android:layout_marginStart="8dp"
+            android:id="@+id/textViewFoodType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/FoodType"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="@+id/textViewType"
-            app:layout_constraintStart_toStartOf="@+id/textViewType"
-            app:layout_constraintTop_toBottomOf="@+id/textViewType"
-            tools:text="Calories: 108 kcal" />
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodName" />
+
         <TextView
-            android:id="@+id/textViewProtein"
-            android:layout_marginStart="8dp"
+            android:id="@+id/textViewFoodKcal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/FoodKcal"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="@+id/textViewKcal"
-            app:layout_constraintStart_toStartOf="@+id/textViewKcal"
-            app:layout_constraintTop_toBottomOf="@+id/textViewKcal"
-            tools:text="Protein: 24.1 grams" />
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodType" />
+
         <TextView
-            android:id="@+id/textViewFat"
-            android:layout_marginStart="8dp"
+            android:id="@+id/textViewFoodProtein"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/FoodProtein"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="@+id/textViewProtein"
-            app:layout_constraintStart_toStartOf="@+id/textViewProtein"
-            app:layout_constraintTop_toBottomOf="@+id/textViewProtein"
-            tools:text="Fat: 1.2 grams" />
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodKcal" />
+
         <TextView
-            android:id="@+id/textViewCarbohydrate"
-            android:layout_marginStart="8dp"
+            android:id="@+id/textViewFoodFat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/FoodFat"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="@+id/textViewFat"
-            app:layout_constraintStart_toStartOf="@+id/textViewFat"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFat"
-            tools:text="Carbohydrate: 0 grams" />-->
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodProtein" />
+
+        <TextView
+            android:id="@+id/textViewFoodCarbohydrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/FoodCarbohydrate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFoodFat" />
+
 
     </LinearLayout>
 </FrameLayout>

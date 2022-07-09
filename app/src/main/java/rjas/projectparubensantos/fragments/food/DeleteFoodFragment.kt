@@ -49,7 +49,12 @@ class DeleteFoodFragment : Fragment() {
 
         food = DeleteFoodFragmentArgs.fromBundle(arguments!!).food
 
-        binding.textViewName.text = food.foodName
+        binding.textViewFoodNameDelete.text = food.foodName
+        binding.textViewFoodTypeDelete.text = food.foodTypeId.foodType
+        binding.textViewFoodKcalDelete.text = food.kcal.toString()
+        binding.textViewFoodProteinDelete.text = food.protein.toString()
+        binding.textViewFoodFatDelete.text = food.fat.toString()
+        binding.textViewCarbohydrateDelete.text = food.carbohydrate.toString()
     }
     private fun deleteFoodDialog() {
         val alertDialog = AlertDialog.Builder(requireContext())
@@ -68,7 +73,7 @@ class DeleteFoodFragment : Fragment() {
 
         if (deletedFoods != 1) {
             Snackbar.make(
-                binding.textViewName,
+                binding.textViewFoodNameDelete,
                 R.string.error_delete_food,
                 Snackbar.LENGTH_INDEFINITE
             ).show()
