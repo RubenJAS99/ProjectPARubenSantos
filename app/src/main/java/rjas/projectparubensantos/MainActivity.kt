@@ -107,4 +107,8 @@ class MainActivity : AppCompatActivity() {
         menu!!.findItem(R.id.action_modify).setVisible(displayModifyDelete)
         menu!!.findItem(R.id.action_delete).setVisible(displayModifyDelete)
     }
+
+    fun updatePageTitle(id_string_title: Int) {
+        binding.appBarMain.toolbar.setTitle(id_string_title)
+    }
 }
