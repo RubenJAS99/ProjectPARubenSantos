@@ -1,6 +1,7 @@
 package rjas.projectparubensantos.fragments.food
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -59,7 +60,6 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
             if (food != null) {
                 binding.editTextFoodName.setText(food!!.foodName)
-               //binding.spinnerFoodType.setSelection(food!!.foodTypeId.foodType)
                 binding.editTextNumberFoodKcal.setText(food!!.kcal.toString())
                 binding.editTextNumberFoodProtein.setText(food!!.protein.toString())
                 binding.editTextNumberFoodFat.setText(food!!.fat.toString())
@@ -96,8 +96,8 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
             return
         }
 
-        val foodType = binding.spinnerFoodType.selectedItemId
-        if (foodType == Spinner.INVALID_ROW_ID) {
+        val typeId = binding.spinnerFoodType.selectedItemId
+        if (typeId == Spinner.INVALID_ROW_ID) {
             binding.spinnerFoodType.requestFocus()
             return
         }
@@ -126,42 +126,72 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
             return
         }
 
+        val savedFood =
+            if (food == null) {
+                insertFood(
+                    foodName,
+                    typeId,
+                    kcal,
+                    protein,
+                    fat,
+                    carbohydrate
+                )
+            } else {
+                modifyFood(
+                    foodName,
+                    typeId,
+                    kcal,
+                    protein,
+                    fat,
+                    carbohydrate
+                )
+            }
+
+        if (savedFood) {
+            Toast.makeText(requireContext(), R.string.success_insert_food, Toast.LENGTH_LONG)
+                .show()
+            goToFood()
+        } else {
+            Snackbar.make(binding.editTextFoodName, R.string.error_insert_food, Snackbar.LENGTH_INDEFINITE).show()
+            return
+        }
+    }
+    private fun modifyFood(foodName: String, typeId: Long, kcal: Int, protein: Double, fat: Double, carbohydrate: Double) : Boolean {
         val food = Food(
             foodName,
-            Type("",foodType),
+            Type(id= typeId),
             kcal,
             protein,
             fat,
             carbohydrate
         )
 
-        val address = requireActivity().contentResolver.insert(
-            ContentProvider.FOOD_ADDRESS,
-            food.toContentValues()
+        val foodAddress = Uri.withAppendedPath(ContentProvider.FOOD_ADDRESS, "${this.food!!.id}")
+
+        val modifiedFood = requireActivity().contentResolver.update(foodAddress, food.toContentValues(), null, null)
+
+        return modifiedFood == 1
+    }
+
+    private fun insertFood(foodName: String, typeId: Long, kcal: Int, protein: Double, fat: Double, carbohydrate: Double): Boolean {
+        val food = Food(
+            foodName,
+            Type(id= typeId),
+            kcal,
+            protein,
+            fat,
+            carbohydrate
         )
 
-        if (address != null) {
-            Toast.makeText(requireContext(), R.string.success_insert_food, Toast.LENGTH_LONG).show()
-            goToFood()
-        } else {
-            Snackbar.make(binding.editTextFoodName, R.string.error_insert_food, Snackbar.LENGTH_INDEFINITE).show()
-        }
+        val foodInsertedAddress = requireActivity().contentResolver.insert(ContentProvider.FOOD_ADDRESS, food.toContentValues())
+
+        return foodInsertedAddress != null
     }
 
     companion object {
         const val ID_LOADER_FOOD_TYPE = 0
     }
 
-    /**
-     * Instantiate and return a new Loader for the given ID.
-     *
-     *
-     * This will always be called from the process's main thread.
-     *
-     * @param id The ID whose loader is to be created.
-     * @param args Any arguments supplied by the caller.
-     * @return Return a new Loader instance that is ready to start loading.
-     */
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
         CursorLoader(
             requireContext(),
@@ -172,49 +202,6 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
             FoodTypeTableBD.FOOD_TYPE
         )
 
-    /**
-     * Called when a previously created loader has finished its load.  Note
-     * that normally an application is *not* allowed to commit fragment
-     * transactions while in this call, since it can happen after an
-     * activity's state is saved.  See [ FragmentManager.openTransaction()][androidx.fragment.app.FragmentManager.beginTransaction] for further discussion on this.
-     *
-     *
-     * This function is guaranteed to be called prior to the release of
-     * the last data that was supplied for this Loader.  At this point
-     * you should remove all use of the old data (since it will be released
-     * soon), but should not do your own release of the data since its Loader
-     * owns it and will take care of that.  The Loader will take care of
-     * management of its data so you don't have to.  In particular:
-     *
-     *
-     *  *
-     *
-     *The Loader will monitor for changes to the data, and report
-     * them to you through new calls here.  You should not monitor the
-     * data yourself.  For example, if the data is a [android.database.Cursor]
-     * and you place it in a [android.widget.CursorAdapter], use
-     * the [android.widget.CursorAdapter.CursorAdapter] constructor *without* passing
-     * in either [android.widget.CursorAdapter.FLAG_AUTO_REQUERY]
-     * or [android.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER]
-     * (that is, use 0 for the flags argument).  This prevents the CursorAdapter
-     * from doing its own observing of the Cursor, which is not needed since
-     * when a change happens you will get a new Cursor throw another call
-     * here.
-     *  *  The Loader will release the data once it knows the application
-     * is no longer using it.  For example, if the data is
-     * a [android.database.Cursor] from a [android.content.CursorLoader],
-     * you should not call close() on it yourself.  If the Cursor is being placed in a
-     * [android.widget.CursorAdapter], you should use the
-     * [android.widget.CursorAdapter.swapCursor]
-     * method so that the old Cursor is not closed.
-     *
-     *
-     *
-     * This will always be called from the process's main thread.
-     *
-     * @param loader The Loader that has finished.
-     * @param data The data generated by the Loader.
-     */
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         binding.spinnerFoodType.adapter = SimpleCursorAdapter(
             requireContext(),
@@ -243,16 +230,6 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
         }
     }
 
-    /**
-     * Called when a previously created loader is being reset, and thus
-     * making its data unavailable.  The application should at this point
-     * remove any references it has to the Loader's data.
-     *
-     *
-     * This will always be called from the process's main thread.
-     *
-     * @param loader The Loader that is being reset.
-     */
     override fun onLoaderReset(loader: Loader<Cursor>) {
         binding.spinnerFoodType.adapter = null
     }
