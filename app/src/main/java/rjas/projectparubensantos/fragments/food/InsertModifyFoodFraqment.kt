@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -17,7 +16,6 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import rjas.projectparubensantos.AdapterFoods
 import rjas.projectparubensantos.databinding.FragmentInsertModifyFoodBinding
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
@@ -152,7 +150,7 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
                 .show()
             goToFood()
         } else {
-            Snackbar.make(binding.editTextFoodName, R.string.error_insert_food, Snackbar.LENGTH_INDEFINITE).show()
+            Snackbar.make(binding.editTextFoodName, R.string, Snackbar.LENGTH_INDEFINITE).show()
             return
         }
     }
