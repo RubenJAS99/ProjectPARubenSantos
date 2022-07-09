@@ -61,8 +61,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_diet,
                 R.id.nav_progress,
                 R.id.nav_settings,
-                R.id.nav_food,
-                R.id.nav_InsertModifyFood
+                R.id.nav_food
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -84,11 +83,11 @@ class MainActivity : AppCompatActivity() {
         val processedOption : Boolean
 
         if (fragment is FoodFragment) {
-            processedOption = (fragment as FoodFragment).MenuOptions(item)
+            processedOption = (fragment as FoodFragment).menuOptions(item)
         } else if (fragment is InsertModifyFood) {
-            processedOption = (fragment as InsertModifyFood).MenuOptions(item)
+            processedOption = (fragment as InsertModifyFood).menuOptions(item)
         } else if (fragment is DeleteFoodFragment) {
-            processedOption = (fragment as DeleteFoodFragment).MenuOptions(item)
+            processedOption = (fragment as DeleteFoodFragment).menuOptions(item)
         } else {
             processedOption = false
         }

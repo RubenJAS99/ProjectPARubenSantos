@@ -65,7 +65,7 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     }
 
-    fun MenuOptions(item: MenuItem): Boolean {
+    fun menuOptions(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_insert -> {
                 val action = FoodFragmentDirections.actionNavFoodToNavInsertModifyFood()

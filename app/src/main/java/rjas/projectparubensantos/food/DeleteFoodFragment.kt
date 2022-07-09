@@ -1,5 +1,6 @@
 package rjas.projectparubensantos.food
 
+import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import rjas.projectparubensantos.ContentProvider
@@ -51,19 +53,17 @@ class DeleteFoodFragment : Fragment() {
         binding.textViewName.text = food.foodName
         //binding.textViewType.text = food.foodTypeId.foodType
     }
-    fun MenuOptions(item: MenuItem) : Boolean =
-        when(item.itemId) {
-            R.id.action_delete -> {
+    private fun deleteFoodDialog() {
+        val alertDialog = AlertDialog.Builder(requireContext())
 
-                true
-            }
-            R.id.action_cancel -> {
-                goToFood()
-                true
-            }
-            else -> false
+        alertDialog.apply {
+            setTitle(R.string.delete_food_label)
+            setMessage(R.string.delete_food_confirmation)
+            setNegativeButton(android.R.string.cancel, DialogInterface.OnClickListener { dialogInterface, i ->  })
+            setPositiveButton(R.string.delete, DialogInterface.OnClickListener { dialogInterface, i -> deleteFood() })
+            show()
         }
-
+    }
     private fun deleteFood() {
         val foodAddress = Uri.withAppendedPath(ContentProvider.FOOD_ADDRESS, "${food.id}")
         val deletedFoods = requireActivity().contentResolver.delete(foodAddress, null, null)
@@ -87,6 +87,20 @@ class DeleteFoodFragment : Fragment() {
 /*        private fun goToFood() {
             findNavController().navigate(R.id.action_nav_delete_food_to_nav_food)
         }*/
+    }
+
+    fun menuOptions(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_delete -> {
+                deleteFood()
+                true
+            }
+            R.id.action_cancel -> {
+                goToFood()
+                true
+            }
+            else -> false
+        }
     }
 
 }
