@@ -30,7 +30,9 @@
 
     <string name="success_insert_food">Food inserted successfully.</string>
     <string name="error_insert_food">Error inserting food.</string>
-    <string name="erro_guardar_livro">Erro ao guardar livro.</string>
+    <string name="success_delete_food">Food deleted successfully.</string>
+    <string name="error_delete_food">Error deleting food.</string>
+
 
     <string name="insert_food_label">New food</string>
     <string name="delete_food_label">Delete food</string>
