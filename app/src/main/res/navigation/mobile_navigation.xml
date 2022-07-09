@@ -62,6 +62,11 @@
         <action
             android:id="@+id/action_nav_InsertModifyFood_to_nav_food"
             app:destination="@id/nav_food" />
+        <argument
+            android:name="food"
+            app:argType="rjas.projectparubensantos.food.Food"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
     <fragment
