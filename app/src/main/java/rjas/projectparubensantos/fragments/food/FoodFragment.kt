@@ -70,7 +70,11 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
                 findNavController().navigate(action)
                 true
             }
-            R.id.action_modify -> true
+            R.id.action_modify -> {
+                val action = FoodFragmentDirections.actionNavFoodToNavInsertModifyFood(foodSelected!!)
+                findNavController().navigate(action)
+                true
+            }
             R.id.action_delete -> {
                 val action = FoodFragmentDirections.actionNavFoodToNavDeleteFood(foodSelected!!)
                 findNavController().navigate(action)

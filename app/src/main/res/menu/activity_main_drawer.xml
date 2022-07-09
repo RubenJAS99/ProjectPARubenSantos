@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-// Add the buttons on the side bar
+<!--Add the buttons on the side bar-->
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
@@ -26,7 +26,7 @@
             android:title="@string/menu_progress" />
 
     </group>
-    // Add the Settings button on the side bar with a separation from the others
+<!--Add the Settings button on the side bar with a separation from the others-->
     <item android:title="">
     <menu>
         <item
