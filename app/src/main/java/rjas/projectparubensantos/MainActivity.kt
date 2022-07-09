@@ -15,9 +15,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import rjas.projectparubensantos.databinding.ActivityMainBinding
-import rjas.projectparubensantos.food.DeleteFoodFragment
+import rjas.projectparubensantos.fragments.food.DeleteFoodFragment
 import rjas.projectparubensantos.fragments.food.FoodFragment
-import rjas.projectparubensantos.food.InsertModifyFood
+import rjas.projectparubensantos.fragments.food.InsertModifyFoodFraqment
 
 
 class MainActivity : AppCompatActivity() {
@@ -84,8 +84,8 @@ class MainActivity : AppCompatActivity() {
 
         if (fragment is FoodFragment) {
             processedOption = (fragment as FoodFragment).menuOptions(item)
-        } else if (fragment is InsertModifyFood) {
-            processedOption = (fragment as InsertModifyFood).menuOptions(item)
+        } else if (fragment is InsertModifyFoodFraqment) {
+            processedOption = (fragment as InsertModifyFoodFraqment).menuOptions(item)
         } else if (fragment is DeleteFoodFragment) {
             processedOption = (fragment as DeleteFoodFragment).menuOptions(item)
         } else {

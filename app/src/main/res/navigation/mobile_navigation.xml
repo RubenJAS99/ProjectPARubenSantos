@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/nav_InsertModifyFood"
-        android:name="rjas.projectparubensantos.food.InsertModifyFood"
+        android:name="rjas.projectparubensantos.fragments.food.InsertModifyFoodFraqment"
         android:label="@string/InsertModifyFood"
         tools:layout="@layout/fragment_insert_modify_food">
         <action
@@ -71,7 +71,7 @@
 
     <fragment
         android:id="@+id/nav_delete_food"
-        android:name="rjas.projectparubensantos.fragments.food.DeleteFood"
+        android:name="rjas.projectparubensantos.fragments.food.DeleteFoodFragment"
         android:label="@string/delete_food_label"
         tools:layout="@layout/fragment_delete_food">
         <action

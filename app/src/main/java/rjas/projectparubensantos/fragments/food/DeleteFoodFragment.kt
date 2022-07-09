@@ -1,4 +1,4 @@
-package rjas.projectparubensantos.food
+package rjas.projectparubensantos.fragments.food
 
 import android.content.DialogInterface
 import android.net.Uri
@@ -16,8 +16,7 @@ import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentDeleteFoodBinding
-import rjas.projectparubensantos.fragments.food.DeleteFoodArgs
-import rjas.projectparubensantos.fragments.food.DeleteFoodDirections
+import rjas.projectparubensantos.food.Food
 
 class DeleteFoodFragment : Fragment() {
     private var _binding: FragmentDeleteFoodBinding? = null
@@ -48,7 +47,7 @@ class DeleteFoodFragment : Fragment() {
         activity.fragment = this
         activity.idMainMenu = R.menu.deleting_menu
 
-        food = DeleteFoodArgs.fromBundle(arguments!!).food
+        food = DeleteFoodFragmentArgs.fromBundle(arguments!!).food
 
         binding.textViewName.text = food.foodName
         //binding.textViewType.text = food.foodTypeId.foodType
@@ -82,7 +81,7 @@ class DeleteFoodFragment : Fragment() {
     }
 
     private fun goToFood() {
-        val action = DeleteFoodDirections.actionNavDeleteFoodToNavFood()
+        val action = DeleteFoodFragmentDirections.actionNavDeleteFoodToNavFood()
         findNavController().navigate(action)
 /*        private fun goToFood() {
             findNavController().navigate(R.id.action_nav_delete_food_to_nav_food)

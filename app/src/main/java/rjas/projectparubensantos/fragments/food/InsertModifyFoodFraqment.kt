@@ -1,4 +1,4 @@
-package rjas.projectparubensantos.food
+package rjas.projectparubensantos.fragments.food
 
 import android.database.Cursor
 import android.os.Bundle
@@ -19,8 +19,11 @@ import rjas.projectparubensantos.databinding.FragmentInsertModifyFoodBinding
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
+import rjas.projectparubensantos.food.Food
+import rjas.projectparubensantos.food.FoodTypeTableBD
+import rjas.projectparubensantos.food.Type
 
-class InsertModifyFood: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentInsertModifyFoodBinding? = null
 
     // This property is only valid between onCreateView and
