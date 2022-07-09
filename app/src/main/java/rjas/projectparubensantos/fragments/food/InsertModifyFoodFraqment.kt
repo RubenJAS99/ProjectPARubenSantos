@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -15,6 +16,7 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import rjas.projectparubensantos.AdapterFoods
 import rjas.projectparubensantos.databinding.FragmentInsertModifyFoodBinding
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
@@ -29,6 +31,8 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private var food: Food? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,11 +50,24 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD_TYPE, null, this)
-
         val activity = requireActivity() as MainActivity
         activity.fragment = this
         activity.idMainMenu = R.menu.editing_menu
+
+        if (arguments != null) {
+            food = InsertModifyFoodFraqmentArgs.fromBundle(arguments!!).food
+
+            if (food != null) {
+                binding.editTextFoodName.setText(food!!.foodName)
+               //binding.spinnerFoodType.setSelection(food!!.foodTypeId.foodType)
+                binding.editTextNumberFoodKcal.setText(food!!.kcal.toString())
+                binding.editTextNumberFoodProtein.setText(food!!.protein.toString())
+                binding.editTextNumberFoodFat.setText(food!!.fat.toString())
+                binding.editTextNumberFoodCarbohydrate.setText(food!!.carbohydrate.toString())
+            }
+        }
+
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_FOOD_TYPE, null, this)
     }
 
     fun menuOptions(item: MenuItem): Boolean {
@@ -207,6 +224,23 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
             intArrayOf(android.R.id.text1),
             0
         )
+       // binding.spinnerFoodType.adapter = Adapter
+
+        updateSelectedFood()
+    }
+
+    private fun updateSelectedFood() {
+        if (food == null) return
+        val typeId = food!!.foodTypeId.id
+
+        val lastType = binding.spinnerFoodType.count - 1
+
+        for (i in 0..lastType) {
+            if (binding.spinnerFoodType.getItemIdAtPosition(i) == typeId) {
+                binding.spinnerFoodType.setSelection(i)
+                return
+            }
+        }
     }
 
     /**
