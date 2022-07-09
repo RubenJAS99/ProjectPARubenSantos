@@ -50,7 +50,6 @@ class DeleteFoodFragment : Fragment() {
         food = DeleteFoodFragmentArgs.fromBundle(arguments!!).food
 
         binding.textViewName.text = food.foodName
-        //binding.textViewType.text = food.foodTypeId.foodType
     }
     private fun deleteFoodDialog() {
         val alertDialog = AlertDialog.Builder(requireContext())
@@ -83,15 +82,13 @@ class DeleteFoodFragment : Fragment() {
     private fun goToFood() {
         val action = DeleteFoodFragmentDirections.actionNavDeleteFoodToNavFood()
         findNavController().navigate(action)
-/*        private fun goToFood() {
-            findNavController().navigate(R.id.action_nav_delete_food_to_nav_food)
-        }*/
+
     }
 
     fun menuOptions(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_delete -> {
-                deleteFood()
+                deleteFoodDialog()
                 true
             }
             R.id.action_cancel -> {
