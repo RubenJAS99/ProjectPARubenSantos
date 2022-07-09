@@ -99,7 +99,7 @@ class DataBaseTest {
     fun canInsertFoodType() {
         val db = getWritableDatabase()
 
-        val foodTypeId = Type("Fat")
+        val foodTypeId = Type("Protein")
         insertFoodType(db, foodTypeId)
 
         db.close()
@@ -200,6 +200,7 @@ class DataBaseTest {
 
         db.close()
     }
+
     @Test
     fun canDeleteProgress() {
         val db = getWritableDatabase()

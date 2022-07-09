@@ -101,26 +101,26 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
             binding.spinnerFoodType.requestFocus()
             return
         }
-        val kcal = binding.editTextNumberFoodKcal.text.toString().toInt()
-        if (kcal.equals(null)) {
+        val kcal = binding.editTextNumberFoodKcal.text.toString()
+        if (kcal.equals("")) {
             binding.editTextNumberFoodKcal.error = getString(R.string.food_kcal_mandatory)
             binding.editTextNumberFoodKcal.requestFocus()
             return
         }
-        val protein = binding.editTextNumberFoodProtein.text.toString().toDouble()
-        if (protein.equals(null)) {
+        val protein = binding.editTextNumberFoodProtein.text.toString()
+        if (protein.equals("")) {
             binding.editTextNumberFoodProtein.error = getString(R.string.food_protein_mandatory)
             binding.editTextNumberFoodProtein.requestFocus()
             return
         }
-        val fat = binding.editTextNumberFoodFat.text.toString().toDouble()
-        if (fat.equals(null)) {
+        val fat = binding.editTextNumberFoodFat.text.toString()
+        if (fat.equals("")){
             binding.editTextNumberFoodFat.error = getString(R.string.food_fat_mandatory)
             binding.editTextNumberFoodFat.requestFocus()
             return
         }
-        val carbohydrate = binding.editTextNumberFoodCarbohydrate.text.toString().toDouble()
-        if (carbohydrate.equals(null)) {
+        val carbohydrate = binding.editTextNumberFoodCarbohydrate.text.toString()
+        if (carbohydrate.equals("")) {
             binding.editTextNumberFoodCarbohydrate.error = getString(R.string.food_carbohydrate_mandatory)
             binding.editTextNumberFoodCarbohydrate.requestFocus()
             return
@@ -131,19 +131,19 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
                 insertFood(
                     foodName,
                     typeId,
-                    kcal,
-                    protein,
-                    fat,
-                    carbohydrate
+                    kcal.toInt(),
+                    protein.toDouble(),
+                    fat.toDouble(),
+                    carbohydrate.toDouble()
                 )
             } else {
                 modifyFood(
                     foodName,
                     typeId,
-                    kcal,
-                    protein,
-                    fat,
-                    carbohydrate
+                    kcal.toInt(),
+                    protein.toDouble(),
+                    fat.toDouble(),
+                    carbohydrate.toDouble()
                 )
             }
 
