@@ -1,9 +1,11 @@
 package rjas.projectparubensantos
 
+import android.content.Intent
 import android.os.Bundle
 
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -14,10 +16,14 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import rjas.projectparubensantos.databinding.ActivityMainBinding
 import rjas.projectparubensantos.fragments.food.DeleteFoodFragment
+import rjas.projectparubensantos.fragments.food.DeleteFoodFragmentDirections
 import rjas.projectparubensantos.fragments.food.FoodFragment
 import rjas.projectparubensantos.fragments.food.InsertModifyFoodFraqment
+import rjas.projectparubensantos.fragments.nutrition.NutritionFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     private var menu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -45,9 +52,10 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        binding.appBarMain.nutrition.setOnClickListener { view ->
+            Snackbar.make(view, "Nutrition", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
+
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
