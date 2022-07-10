@@ -19,6 +19,7 @@ import rjas.projectparubensantos.databinding.FragmentSettingsBinding
 
 class SettingsFragment: Fragment() {
     private var _binding: FragmentSettingsBinding? = null
+    lateinit var databinding : FragmentSettingsBinding
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -35,7 +36,7 @@ class SettingsFragment: Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSettings
+        val textView: TextView = binding.textSettingsTheme
         settingsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
@@ -53,11 +54,11 @@ class SettingsFragment: Fragment() {
         switchThemeMode.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked){
                 AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-                Snackbar.make(view, "Dark mode on", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, R.string.dark_on, Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             }else{
                 AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-                Snackbar.make(view, "Dark mode off", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, R.string.dark_off, Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             }
         }

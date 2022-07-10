@@ -3,7 +3,6 @@ package rjas.projectparubensantos.fragments.diet
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentDietBinding
 
 private const val TAG = "DietFragment"
-private const val ActivityLevel = 2
 
 class DietFragment: Fragment() {
     private var _binding: FragmentDietBinding? = null
@@ -43,17 +41,12 @@ class DietFragment: Fragment() {
         _binding = FragmentDietBinding.inflate(inflater, container, false)
       val root: View = binding.root
 
-/*        val textView: TextView = binding.textDiet
-        dietViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }*/
         (activity as MainActivity).idMainMenu = R.menu.main
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //textViewActivityDescription.text = "$ActivityLevel%"
         //Read the input and save to a variable
         editTextNumberDecimalWeight = view.findViewById(R.id.editTextNumberDecimalWeight)
         editTextNumberDecimalHeight = view.findViewById(R.id.editTextNumberDecimalHeight)
@@ -70,7 +63,6 @@ class DietFragment: Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                Log.i(TAG, "afterTextChangedWeight $s")
                 kcalResult()
             }
         })
@@ -80,7 +72,6 @@ class DietFragment: Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                Log.i(TAG, "afterTextChangedHeight $s")
                 kcalResult()
             }
         })
@@ -90,13 +81,11 @@ class DietFragment: Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                Log.i(TAG, "afterTextChangedAge $s")
                 kcalResult()
             }
         })
         seekBarActivityLevel.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Log.i(TAG, "onProgressChangedActivityLevel $progress")
                 kcalResult()
                 updateActivityDescription(progress)
 
@@ -110,21 +99,13 @@ class DietFragment: Fragment() {
     private fun updateActivityDescription(ActivityDescription: Int) {
         //Description of the Activity input
         val activityLevel =  when (ActivityDescription) {
-            0 -> "Sedentary"
-            1 -> "1 to 3 days a week"
-            2 -> "3 to 5 days a week"
-            3 -> "6 to 7 days a week"
-            else -> "2 times a day"
+            0 -> getString(R.string.ActivityDescription1)
+            1 -> getString(R.string.ActivityDescription2)
+            2 -> getString(R.string.ActivityDescription3)
+            3 -> getString(R.string.ActivityDescription4)
+            else -> getString(R.string.ActivityDescription5)
         }
         textViewActivityDescription.text = activityLevel
-       /* //Color update
-        val color = ArgbEvaluator().evaluate(
-           ActivityDescription.toFloat() / seekBarActivityLevel.max,
-
-            ContextCompat.getColor(this, R.color.lowExercise),
-            ContextCompat.getColor(this, R.color.highExercise)
-
-        )*/
     }
 
     private fun kcalResult() {
@@ -154,7 +135,6 @@ class DietFragment: Fragment() {
         val result = (((10 * weight) + (6.25 * height) - (5 * age)) + 5 )* activityLevel
 
         //Updating the result text view
-        Log.i(TAG, "activityLevel $activityLevel")
         textViewResult2.text = "%.0f".format(result)
 
     }

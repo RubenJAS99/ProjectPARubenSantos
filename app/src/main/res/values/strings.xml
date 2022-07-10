@@ -4,11 +4,21 @@
     <string name="navigation_drawer_close">Close menu</string>
     <string name="nav_header_title" translatable="false">Diet App</string>
 
+    <string name="language">Language</string>
+    <string name="language_using">English</string>
+    <string name="language_using_description">The diet app is using the phone default language.</string>
+    <string name="theme">Theme</string>
+    <string name="theme_change">Dark mode</string>
+    <string name="dark_on">Dark mode on</string>
+    <string name="dark_off">Dark mode off</string>
+
+
     <string name="menu_home">Home</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_diet">Diet</string>
     <string name="menu_progress">Progress</string>
     <string name="menu_food">Food</string>
+    <string name="menu_settings">Settings</string>
 
     <string name="insert">Insert</string>
     <string name="modify">Modify</string>
@@ -38,14 +48,19 @@
     <string name="Age">Age:</string>
     <string name="Activity">Activity:</string>
     <string name="Result">Result:</string>
-    <string name="ActivityDescription">1 to 3 days per week</string>
+    <string name="ActivityDescription1">Sedentary</string>
+    <string name="ActivityDescription2">1 to 3 days per week</string>
+    <string name="ActivityDescription3">3 to 5 days a week</string>
+    <string name="ActivityDescription4">6 to 7 days a week</string>
+    <string name="ActivityDescription5">2 times a day</string>
+
 
     <string name="Food">Food</string>
     <string name="FoodName">Name:</string>
     <string name="FoodName2">Chicken breast</string>
     <string name="FoodType">Type:</string>
     <string name="FoodType2">Protein</string>
-    <string name="FoodKcal">Kcal:</string>
+    <string name="FoodKcal" translatable="false">Kcal:</string>
     <string name="FoodProtein">Protein:</string>
     <string name="FoodFat">Fat:</string>
     <string name="FoodCarbohydrate">Carbs:</string>
@@ -60,5 +75,6 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="FoodCarbohydrateDescription">" "</string>
 
 </resources>

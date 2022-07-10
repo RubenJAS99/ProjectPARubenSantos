@@ -1,168 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragments.food.InsertModifyFoodFraqment">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.food.InsertModifyFoodFraqment">
 
-        <!--Left Components-->
-        <TextView
-            android:id="@+id/textViewFood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/Food"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <!--Left Components-->
 
-        <TextView
-            android:id="@+id/textViewFoodName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/FoodName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFood" />
+    <TextView
+        android:id="@+id/textViewFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/Food"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textViewFoodType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/FoodType"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFoodName" />
+    <TextView
+        android:id="@+id/textViewFoodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/FoodName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFood" />
 
-        <TextView
-            android:id="@+id/textViewFoodKcal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/FoodKcal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFoodType" />
+    <TextView
+        android:id="@+id/textViewFoodType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/FoodType"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodName" />
 
-        <TextView
-            android:id="@+id/textViewFoodProtein"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/FoodProtein"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFoodKcal" />
+    <TextView
+        android:id="@+id/textViewFoodKcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/FoodKcal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodType" />
 
-        <TextView
-            android:id="@+id/textViewFoodFat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/FoodFat"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFoodProtein" />
+    <TextView
+        android:id="@+id/textViewFoodProtein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/FoodProtein"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodKcal" />
 
-        <TextView
-            android:id="@+id/textViewFoodCarbohydrate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/FoodCarbohydrate"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textViewFood"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFoodFat" />
+    <TextView
+        android:id="@+id/textViewFoodFat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/FoodFat"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodProtein" />
 
-        <!--Right Components-->
+    <!--Right Components-->
 
-        <EditText
-            android:id="@+id/editTextFoodName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="@string/FoodName2"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodName"
-            app:layout_constraintStart_toEndOf="@+id/textViewFoodName"
-            app:layout_constraintTop_toTopOf="@+id/textViewFoodName" />
+
+    <TextView
+        android:id="@+id/textViewFoodCarbohydrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/FoodCarbohydrate"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodFat" />
+
+    <TextView
+        android:id="@+id/textViewFoodCarbohydrateDescription"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="8dp"
+        android:baselineAligned="false"
+        android:text="@string/FoodCarbohydrateDescription"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodFat" />
+
+    <EditText
+        android:id="@+id/editTextFoodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:ems="10"
+        android:hint="@string/FoodName2"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodName"
+        app:layout_constraintStart_toEndOf="@+id/textViewFoodName"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodName" />
 
     <Spinner
         android:id="@+id/spinnerFoodType"
         android:layout_width="210dp"
         android:layout_height="40dp"
-        android:layout_marginStart="32dp"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="@+id/textViewFoodType"
-        app:layout_constraintStart_toEndOf="@+id/textViewFoodType"
+        app:layout_constraintEnd_toEndOf="@+id/editTextFoodName"
         app:layout_constraintTop_toTopOf="@+id/textViewFoodType"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-            android:id="@+id/editTextNumberFoodKcal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:ems="10"
-            android:hint="108"
-            android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodKcal"
-            app:layout_constraintStart_toEndOf="@+id/textViewFoodKcal"
-            app:layout_constraintTop_toTopOf="@+id/textViewFoodKcal" />
+        android:id="@+id/editTextNumberFoodKcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="108"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodKcal"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerFoodType"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodKcal" />
 
-        <EditText
-            android:id="@+id/editTextNumberFoodProtein"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:ems="10"
-            android:hint="24.1"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodProtein"
-            app:layout_constraintStart_toEndOf="@+id/textViewFoodProtein"
-            app:layout_constraintTop_toTopOf="@+id/textViewFoodProtein" />
+    <EditText
+        android:id="@+id/editTextNumberFoodProtein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="24.1"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodProtein"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNumberFoodKcal"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodProtein" />
 
-        <EditText
-            android:id="@+id/editTextNumberFoodFat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:ems="10"
-            android:hint="1.2"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodFat"
-            app:layout_constraintStart_toEndOf="@+id/textViewFoodFat"
-            app:layout_constraintTop_toTopOf="@+id/textViewFoodFat" />
+    <EditText
+        android:id="@+id/editTextNumberFoodFat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="1.2"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodFat"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNumberFoodProtein"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodFat" />
 
-        <EditText
-            android:id="@+id/editTextNumberFoodCarbohydrate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:ems="10"
-            android:hint="0"
-            android:inputType="numberDecimal"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewFoodCarbohydrate"
-            app:layout_constraintStart_toEndOf="@+id/textViewFoodCarbohydrate"
-            app:layout_constraintTop_toTopOf="@+id/textViewFoodCarbohydrate" />
+    <EditText
+        android:id="@+id/editTextNumberFoodCarbohydrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodCarbohydrate"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNumberFoodFat"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodCarbohydrate" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

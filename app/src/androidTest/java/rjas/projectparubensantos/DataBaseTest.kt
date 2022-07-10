@@ -99,7 +99,7 @@ class DataBaseTest {
     fun canInsertFoodType() {
         val db = getWritableDatabase()
 
-        val foodTypeId = Type("Protein")
+        val foodTypeId = Type("Carbohydrate")
         insertFoodType(db, foodTypeId)
 
         db.close()

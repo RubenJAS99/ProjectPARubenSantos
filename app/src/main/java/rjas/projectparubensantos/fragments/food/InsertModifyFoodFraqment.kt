@@ -150,7 +150,7 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
                 .show()
             goToFood()
         } else {
-            Snackbar.make(binding.editTextFoodName, R.string, Snackbar.LENGTH_INDEFINITE).show()
+            Snackbar.make(binding.editTextFoodName, R.string.error_inserting_food, Snackbar.LENGTH_INDEFINITE).show()
             return
         }
     }

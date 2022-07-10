@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/nav_settings"
         android:name="rjas.projectparubensantos.fragments.settings.SettingsFragment"
-        android:label="@string/action_settings"
+        android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" >
     </fragment>
 

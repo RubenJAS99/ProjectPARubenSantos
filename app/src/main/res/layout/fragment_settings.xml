@@ -7,15 +7,16 @@
     tools:context=".fragments.settings.SettingsFragment">
 
     <TextView
-        android:id="@+id/text_settings"
+        android:id="@+id/text_settings_language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Language"
+        android:background="#7E6D6D"
+        android:text="@string/language"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,20 +25,52 @@
         app:layout_constraintVertical_bias="0.011" />
 
     <TextView
-        android:id="@+id/text_settingqwss"
+        android:id="@+id/text_settings_language_string"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Theme"
+        android:text="@string/language_using"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_settings_language"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/text_settings_language_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/language_using_description"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_settings_language_string"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
+        android:id="@+id/text_settings_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#7E6D6D"
+        android:text="@string/theme"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_settings_language_description"
         app:layout_constraintVertical_bias="0.152" />
 
     <Switch
@@ -47,7 +80,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:minHeight="48dp"
-        android:text="Theme mode"
+        android:text="@string/theme_change"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_settingqwss" />
+        app:layout_constraintTop_toBottomOf="@+id/text_settings_theme" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

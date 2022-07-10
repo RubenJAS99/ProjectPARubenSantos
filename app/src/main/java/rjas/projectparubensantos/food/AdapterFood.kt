@@ -1,11 +1,11 @@
-package rjas.projectparubensantos
+package rjas.projectparubensantos.food
 
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import rjas.projectparubensantos.food.Food
+import rjas.projectparubensantos.R
 import rjas.projectparubensantos.fragments.food.FoodFragment
 
 class AdapterFoods (val fragment: FoodFragment): RecyclerView.Adapter<AdapterFoods.ViewHolderFood>() {

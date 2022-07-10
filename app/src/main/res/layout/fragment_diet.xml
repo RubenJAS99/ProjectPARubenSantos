@@ -134,7 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/ActivityDescription"
+        android:text="@string/ActivityDescription2"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/seekBarActivityLevel"
         app:layout_constraintStart_toStartOf="@+id/seekBarActivityLevel"

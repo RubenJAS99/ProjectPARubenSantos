@@ -14,12 +14,11 @@ import androidx.navigation.fragment.findNavController
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.food.FoodTableBD
 import androidx.recyclerview.widget.LinearLayoutManager
-import rjas.projectparubensantos.AdapterFoods
+import rjas.projectparubensantos.food.AdapterFoods
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentFoodBinding
 import rjas.projectparubensantos.food.Food
-import rjas.projectparubensantos.food.FoodTypeTableBD
 
 class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     var foodSelected: Food? = null
