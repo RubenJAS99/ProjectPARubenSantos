@@ -30,10 +30,10 @@ class ProgressFragment: Fragment() {
         _binding = FragmentProgressBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textProgress
+/*        val textView: TextView = binding.textProgress
         progressViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
         (activity as MainActivity).idMainMenu = R.menu.main
         return root
     }

@@ -65,6 +65,10 @@
     <string name="FoodFat">Fat:</string>
     <string name="FoodCarbohydrate">Carbs:</string>
 
+    <string name="Progress">Progress</string>
+    <string name="Period">Period:</string>
+    <string name="Cut">Weight Loss</string>
+
 
     <string name="title_activity_login">Login Activity</string>
     <string name="prompt_email" translatable="false">Email</string>

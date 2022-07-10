@@ -6,26 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".fragments.progress.ProgressFragment">
 
+    <!--Left Components-->
     <TextView
-        android:id="@+id/text_progress"
-        android:layout_width="match_parent"
+        android:id="@+id/textViewProgress"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="8dp"
+        android:text="@string/Progress"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+    <TextView
+        android:id="@+id/textViewWeightProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="54dp" />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/Weight"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewProgress"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgress" />
+
+    <TextView
+        android:id="@+id/textViewPeriodProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/Period"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWeightProgress"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeightProgress" />
+
+    <!--Right Components-->
+    <EditText
+        android:id="@+id/editTextWeightProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:ems="10"
+        android:hint="65"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewWeightProgress"
+        app:layout_constraintStart_toEndOf="@+id/textViewWeightProgress"
+        app:layout_constraintTop_toTopOf="@+id/textViewWeightProgress" />
+
+    <EditText
+        android:id="@+id/editTextPeriodProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/Cut"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPeriodProgress"
+        app:layout_constraintStart_toStartOf="@+id/editTextWeightProgress"
+        app:layout_constraintTop_toTopOf="@+id/textViewPeriodProgress" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

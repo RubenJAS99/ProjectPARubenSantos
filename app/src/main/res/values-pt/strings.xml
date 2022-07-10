@@ -60,4 +60,7 @@
     <string name="ActivityDescription4">6 a 7 dias por semana</string>
     <string name="ActivityDescription5">2 vezes por dia</string>
     <string name="FoodCarbohydrateDescription">(Hidrato de carbono)</string>
+    <string name="Progress">Progresso</string>
+    <string name="Period">Período:</string>
+    <string name="Cut">Perda de peso</string>
 </resources>
