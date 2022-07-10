@@ -209,7 +209,6 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
             intArrayOf(android.R.id.text1),
             0
         )
-       // binding.spinnerFoodType.adapter = Adapter
 
         updateSelectedFood()
     }
@@ -229,6 +228,7 @@ class InsertModifyFoodFraqment: Fragment(), LoaderManager.LoaderCallbacks<Cursor
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
+        if (_binding == null) return
         binding.spinnerFoodType.adapter = null
     }
 }
