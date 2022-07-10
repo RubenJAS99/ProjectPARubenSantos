@@ -62,6 +62,10 @@
     <string name="FoodCarbohydrateDescription">(Hidrato de carbono)</string>
     <string name="Progress">Progresso</string>
     <string name="Period">Período:</string>
-    <string name="Cut">Perda de peso</string>
     <string name="menu_nutrition">Nutrição</string>
+    <string-array name="Period">
+        <item>Perda de peso</item>
+        <item>Ganho de peso</item>
+        <item>Manutenção do peso</item>
+    </string-array>
 </resources>

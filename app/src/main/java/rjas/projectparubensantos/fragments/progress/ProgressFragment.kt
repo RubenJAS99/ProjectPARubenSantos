@@ -2,11 +2,15 @@ package rjas.projectparubensantos.fragments.progress
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.SimpleCursorAdapter
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentProgressBinding
@@ -34,13 +38,23 @@ class ProgressFragment: Fragment() {
         progressViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }*/
-        (activity as MainActivity).idMainMenu = R.menu.main
+        (activity as MainActivity).idMainMenu = R.menu.editing_menu
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun menuOptions(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_save -> {
+                //save()
+                true
+            }
+            else -> false
+        }
     }
 
 }

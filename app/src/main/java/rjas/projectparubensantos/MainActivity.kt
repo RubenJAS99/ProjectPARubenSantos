@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -19,10 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import rjas.projectparubensantos.databinding.ActivityMainBinding
-import rjas.projectparubensantos.fragments.food.DeleteFoodFragment
-import rjas.projectparubensantos.fragments.food.DeleteFoodFragmentDirections
-import rjas.projectparubensantos.fragments.food.FoodFragment
-import rjas.projectparubensantos.fragments.food.InsertModifyFoodFraqment
+import rjas.projectparubensantos.fragments.food.*
 import rjas.projectparubensantos.fragments.nutrition.NutritionFragment
 
 

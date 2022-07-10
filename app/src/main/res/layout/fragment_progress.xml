@@ -69,16 +69,14 @@
         app:layout_constraintStart_toEndOf="@+id/textViewWeightProgress"
         app:layout_constraintTop_toTopOf="@+id/textViewWeightProgress" />
 
-    <EditText
-        android:id="@+id/editTextPeriodProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/Cut"
-        android:inputType="numberDecimal"
+    <Spinner
+        android:id="@+id/spinnerPeriodProgress"
+        android:entries="@array/Period"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="@+id/textViewPeriodProgress"
-        app:layout_constraintStart_toStartOf="@+id/editTextWeightProgress"
-        app:layout_constraintTop_toTopOf="@+id/textViewPeriodProgress" />
-
-
+        app:layout_constraintEnd_toEndOf="@+id/editTextWeightProgress"
+        app:layout_constraintTop_toTopOf="@+id/textViewPeriodProgress"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

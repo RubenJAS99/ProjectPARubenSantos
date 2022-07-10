@@ -68,7 +68,12 @@
 
     <string name="Progress">Progress</string>
     <string name="Period">Period:</string>
-    <string name="Cut">Weight Loss</string>
+    <string-array name="Period">
+        <item>Weight Loss</item>
+        <item>Weight Gain</item>
+        <item>Weight Maintenance</item>
+    </string-array>
+
 
 
     <string name="title_activity_login">Login Activity</string>
