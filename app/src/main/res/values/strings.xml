@@ -76,6 +76,7 @@
     <string name="Date">Date:</string>
     <string name="success_insert_progress">Progress inserted successfully.</string>
     <string name="error_inserting_progress">Error inserting progress.</string>
+    <string name="progress_period_mandatory">Select the progress period.</string>
 
 
 

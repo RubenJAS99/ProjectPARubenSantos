@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.SimpleCursorAdapter
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -52,7 +49,25 @@ class ProgressFragment: Fragment() {
             else -> false
         }
     }
-    private fun insertProgress(lastWeight: Double = 0.0, currentWeight: Double, period: String) {
+
+    private fun save() {
+        val lastWeight = binding.editTextWeightProgress.text.toString()
+        if (lastWeight.isBlank()) {
+            binding.editTextWeightProgress.error = getString(R.string.progress_period_mandatory)
+            binding.editTextWeightProgress.requestFocus()
+            return
+        }
+
+        val period = binding.spinnerPeriodProgress.selectedItemId
+        if (period== Spinner.INVALID_ROW_ID) {
+            binding.spinnerPeriodProgress.requestFocus()
+            return
+        }
+
+        insertProgress(0.0,lastWeight.toDouble(), period.toString())
+    }
+
+    private fun insertProgress(lastWeight: Double, currentWeight: Double, period: String) {
         val progress = Progress(lastWeight, currentWeight, period)
 
         val insertProgressAddress = requireActivity().contentResolver.insert(ContentProvider.PROGRESS_ADDRESS, progress.toContentValues())
