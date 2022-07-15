@@ -73,6 +73,9 @@
         <item>Weight Gain</item>
         <item>Weight Maintenance</item>
     </string-array>
+    <string name="Date">Date:</string>
+    <string name="success_insert_progress">Progress inserted successfully.</string>
+    <string name="error_inserting_progress">Error inserting progress.</string>
 
 
 
