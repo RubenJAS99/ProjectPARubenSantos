@@ -30,20 +30,25 @@ class ProgressFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProgressBinding.inflate(inflater, container, false)
-
         (activity as MainActivity).idMainMenu = R.menu.editing_menu
-        return inflater.inflate(R.layout.fragment_progress, container, false)
-    }
+        return binding.root    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val activity = requireActivity() as MainActivity
+        activity.fragment = this
+        activity.idMainMenu = R.menu.editing_menu
+    }
 
     fun menuOptions(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_save -> {
-                //insertProgress()
+                save()
                 true
             }
             else -> false
@@ -51,8 +56,8 @@ class ProgressFragment: Fragment() {
     }
 
     private fun save() {
-        val lastWeight = binding.editTextWeightProgress.text.toString()
-        if (lastWeight.isBlank()) {
+        val currentWeight = binding.editTextWeightProgress.text.toString()
+        if (currentWeight.isBlank()) {
             binding.editTextWeightProgress.error = getString(R.string.progress_period_mandatory)
             binding.editTextWeightProgress.requestFocus()
             return
@@ -64,7 +69,7 @@ class ProgressFragment: Fragment() {
             return
         }
 
-        insertProgress(0.0,lastWeight.toDouble(), period.toString())
+        insertProgress(0.0,currentWeight.toDouble(), period.toString())
     }
 
     private fun insertProgress(lastWeight: Double, currentWeight: Double, period: String) {

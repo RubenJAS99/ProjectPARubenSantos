@@ -22,6 +22,7 @@ import androidx.navigation.fragment.findNavController
 import rjas.projectparubensantos.databinding.ActivityMainBinding
 import rjas.projectparubensantos.fragments.food.*
 import rjas.projectparubensantos.fragments.nutrition.NutritionFragment
+import rjas.projectparubensantos.fragments.progress.ProgressFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -94,6 +95,8 @@ class MainActivity : AppCompatActivity() {
             processedOption = (fragment as InsertModifyFoodFraqment).menuOptions(item)
         } else if (fragment is DeleteFoodFragment) {
             processedOption = (fragment as DeleteFoodFragment).menuOptions(item)
+        } else if (fragment is ProgressFragment) {
+            processedOption = (fragment as ProgressFragment).menuOptions(item)
         } else {
             processedOption = false
         }
