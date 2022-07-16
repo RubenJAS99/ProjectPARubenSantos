@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:background="@color/white"
+        android:background="@color/delete_color_layout"
         android:orientation="vertical">
-<!--Right Text Views-->
+        <!--Right Text Views-->
         <TextView
             android:id="@+id/textViewFoodNameDelete"
             android:layout_width="wrap_content"
@@ -36,9 +36,9 @@
             android:layout_marginTop="11dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            tools:text="Protein"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            tools:text="Protein" />
 
         <TextView
             android:id="@+id/textViewFoodKcalDelete"
@@ -52,6 +52,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="20sp"
             tools:text="108" />
+
         <TextView
             android:id="@+id/textViewFoodProteinDelete"
             android:layout_width="wrap_content"
@@ -64,6 +65,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="20sp"
             tools:text="24.1" />
+
         <TextView
             android:id="@+id/textViewFoodFatDelete"
             android:layout_width="wrap_content"
@@ -76,6 +78,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="20sp"
             tools:text="1.2" />
+
         <TextView
             android:id="@+id/textViewCarbohydrateDelete"
             android:layout_width="wrap_content"
@@ -94,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:background="@color/white"
+        android:background="@color/delete_color_layout"
         android:orientation="vertical">
         <!--Left Text Views-->
 

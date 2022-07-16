@@ -63,7 +63,7 @@ class ProgressFragment: Fragment() {
             return
         }
 
-        val period = binding.spinnerPeriodProgress.selectedItemId
+        val period = binding.spinnerPeriodProgress.selectedItem
         if (period== Spinner.INVALID_ROW_ID) {
             binding.spinnerPeriodProgress.requestFocus()
             return
