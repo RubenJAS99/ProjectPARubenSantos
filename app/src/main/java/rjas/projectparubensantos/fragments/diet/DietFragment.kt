@@ -33,14 +33,10 @@ class DietFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dietViewModel =
-            ViewModelProvider(this).get(DietViewModel::class.java)
-
         _binding = FragmentDietBinding.inflate(inflater, container, false)
-      val root: View = binding.root
-
         (activity as MainActivity).idMainMenu = R.menu.main
-        return root
+        return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
