@@ -41,7 +41,6 @@ class FoodFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
         return binding.root
 
