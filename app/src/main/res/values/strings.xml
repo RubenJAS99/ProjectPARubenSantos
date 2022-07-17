@@ -77,6 +77,7 @@
     <string name="success_insert_progress">Progress inserted successfully.</string>
     <string name="error_inserting_progress">Error inserting progress.</string>
     <string name="progress_period_mandatory">Select the progress period.</string>
+    <string name="progress_weight_mandatory">Write the progress weight.</string>
 
     <string name="summary">Summary</string>
     <string name="kcal_intake">Kcal intake:</string>

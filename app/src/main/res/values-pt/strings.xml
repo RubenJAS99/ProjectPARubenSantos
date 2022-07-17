@@ -11,10 +11,10 @@
     <string name="cancel">Cancelar</string>
     <string name="food_mandatory">Escreva o nome do alimento</string>
     <string name="food_type_mandatory">Selecione o tipo de alimento</string>
-    <string name="food_kcal_mandatory">Escreva a quantidade de kcal do alimento</string>
-    <string name="food_protein_mandatory">Escreva a quantidade de proteína do alimento</string>
-    <string name="food_fat_mandatory">Escreva a quantidade de gordura do alimento</string>
-    <string name="food_carbohydrate_mandatory">Escreva a quantidade de hidrato de carbono do alimento</string>
+    <string name="food_kcal_mandatory">Digite a quantidade de kcal do alimento</string>
+    <string name="food_protein_mandatory">Digite a quantidade de proteína do alimento</string>
+    <string name="food_fat_mandatory">Digite a quantidade de gordura do alimento</string>
+    <string name="food_carbohydrate_mandatory">Digite a quantidade de hidrato de carbono do alimento</string>
     <string name="success_insert_food">Alimento inserido com sucesso.</string>
     <string name="success_delete_food">Alimento eliminado com sucesso.</string>
     <string name="error_delete_food">Erro ao eliminar o alimento</string>
@@ -76,4 +76,5 @@
     <string name="kcal_lack">Kcal em falta:</string>
     <string name="kcal_intake">Kcal necessária:</string>
     <string name="kcal_consumed">Kcal ingerida:</string>
+    <string name="progress_weight_mandatory">Digite o seu peso.</string>
 </resources>

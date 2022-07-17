@@ -58,7 +58,7 @@ class ProgressFragment: Fragment() {
     private fun save() {
         val currentWeight = binding.editTextWeightProgress.text.toString()
         if (currentWeight.isBlank()) {
-            binding.editTextWeightProgress.error = getString(R.string.progress_period_mandatory)
+            binding.editTextWeightProgress.error = getString(R.string.progress_weight_mandatory)
             binding.editTextWeightProgress.requestFocus()
             return
         }
