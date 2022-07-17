@@ -69,7 +69,7 @@ class ProgressFragment: Fragment() {
             return
         }
 
-        insertProgress(0.0,currentWeight.toDouble(), period.toString())
+        insertProgress(68.0,currentWeight.toDouble(), period.toString())
     }
 
     private fun insertProgress(lastWeight: Double, currentWeight: Double, period: String) {

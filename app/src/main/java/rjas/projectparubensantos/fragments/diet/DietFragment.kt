@@ -15,8 +15,6 @@ import rjas.projectparubensantos.MainActivity
 import rjas.projectparubensantos.R
 import rjas.projectparubensantos.databinding.FragmentDietBinding
 
-private const val TAG = "DietFragment"
-
 class DietFragment: Fragment() {
     private var _binding: FragmentDietBinding? = null
 
