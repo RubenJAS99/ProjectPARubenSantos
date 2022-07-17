@@ -72,4 +72,8 @@
     <string name="error_inserting_progress">Erro ao inserir progresso.</string>
     <string name="success_insert_progress">Progresso inserido com sucesso.</string>
     <string name="progress_period_mandatory">Selecione o periodo em que se encontra.</string>
+    <string name="summary">Resumo</string>
+    <string name="kcal_lack">Kcal em falta:</string>
+    <string name="kcal_intake">Kcal necessária:</string>
+    <string name="kcal_consumed">Kcal ingerida:</string>
 </resources>
