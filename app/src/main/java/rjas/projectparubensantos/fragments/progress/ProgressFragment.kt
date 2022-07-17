@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import rjas.projectparubensantos.ContentProvider
 import rjas.projectparubensantos.MainActivity
@@ -68,12 +66,13 @@ class ProgressFragment: Fragment() {
             binding.spinnerPeriodProgress.requestFocus()
             return
         }
+        val date = binding.calendarViewProgress.date
 
-        insertProgress(68.0,currentWeight.toDouble(), period.toString())
+        insertProgress(date.toString(),68.0,currentWeight.toDouble(), period.toString())
     }
 
-    private fun insertProgress(lastWeight: Double, currentWeight: Double, period: String) {
-        val progress = Progress(lastWeight, currentWeight, period)
+    private fun insertProgress(date: String, lastWeight: Double, currentWeight: Double, period: String) {
+        val progress = Progress(date, lastWeight, currentWeight, period)
 
         val insertProgressAddress = requireActivity().contentResolver.insert(ContentProvider.PROGRESS_ADDRESS, progress.toContentValues())
 
