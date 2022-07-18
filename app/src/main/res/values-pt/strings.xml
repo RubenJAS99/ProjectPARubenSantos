@@ -35,7 +35,7 @@
     <string name="FoodProtein">Proteína:</string>
     <string name="FoodFat">Gordura:</string>
     <string name="FoodCarbohydrate">HC:</string>
-    <string name="menu_home">Inicio</string>
+    <string name="menu_home">Início</string>
     <string name="title_activity_login">Login</string>
     <string name="action_sign_in">Inicie sessão ou registe-se</string>
     <string name="action_sign_in_short">Iniciar sessão</string>
@@ -71,10 +71,11 @@
     <string name="Date">Data:</string>
     <string name="error_inserting_progress">Erro ao inserir progresso.</string>
     <string name="success_insert_progress">Progresso inserido com sucesso.</string>
-    <string name="progress_period_mandatory">Selecione o periodo em que se encontra.</string>
+    <string name="progress_period_mandatory">Selecione o período em que se encontra.</string>
     <string name="summary">Resumo</string>
     <string name="kcal_lack">Kcal em falta:</string>
     <string name="kcal_intake">Kcal necessária:</string>
     <string name="kcal_consumed">Kcal ingerida:</string>
     <string name="progress_weight_mandatory">Digite o seu peso.</string>
+    <string name="nutrition">Nutrição</string>
 </resources>

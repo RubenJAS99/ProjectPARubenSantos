@@ -83,6 +83,7 @@
     <string name="kcal_intake">Kcal intake:</string>
     <string name="kcal_consumed">Kcal consumed:</string>
     <string name="kcal_lack">Kcal lack:</string>
+    <string name="nutrition">Nutrition</string>
 
     <string name="title_activity_login">Login Activity</string>
     <string name="prompt_email" translatable="false">Email</string>

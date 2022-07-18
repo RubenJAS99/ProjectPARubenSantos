@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.nutrition.setOnClickListener { view ->
-            Snackbar.make(view, "Nutrition", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, getString(R.string.nutrition), Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
 
         }

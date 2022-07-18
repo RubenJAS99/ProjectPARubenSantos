@@ -50,9 +50,9 @@ class DataBaseTest {
         assertNotEquals(-1, type.id)
     }
 
-    @Before
+    @Test
     fun deleteDataBase() {
-        //appContext().deleteDatabase(BDappOpenHelper.NAME)
+        appContext().deleteDatabase(BDappOpenHelper.NAME)
     }
 
     @Test
@@ -64,7 +64,7 @@ class DataBaseTest {
 
         db.close()
     }
-        @Test
+/*        @Test
         fun canInsertUser() {
             val db = getWritableDatabase()
 
@@ -94,9 +94,9 @@ class DataBaseTest {
             insertProgress(db, progress)
 
             db.close()
-        }
+        }*/
     @Test
-    fun canInsertFoodType() {
+    fun canInsertFoodTypeCarbohydrate() {
         val db = getWritableDatabase()
 
         val foodTypeId = Type("Carbohydrate")
@@ -104,7 +104,26 @@ class DataBaseTest {
 
         db.close()
     }
+    @Test
+    fun canInsertFoodTypeProtein() {
+        val db = getWritableDatabase()
 
+        val foodTypeId = Type("Protein")
+        insertFoodType(db, foodTypeId)
+
+        db.close()
+    }
+    @Test
+    fun canInsertFoodTypeFat() {
+        val db = getWritableDatabase()
+
+        val foodTypeId = Type("Fat")
+        insertFoodType(db, foodTypeId)
+
+        db.close()
+    }
+
+/*
     @Test
     fun canModifyUser() {
         val db = getWritableDatabase()
@@ -271,6 +290,7 @@ class DataBaseTest {
 
         db.close()
     }
+*/
 /*
     @Test
     fun canReadFoodType() {
@@ -320,5 +340,6 @@ class DataBaseTest {
         assertEquals(progress, progressBD)
 
         db.close()
-    }*/
+    }*//*
+*/
 }
